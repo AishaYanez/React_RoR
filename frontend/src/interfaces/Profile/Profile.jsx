@@ -9,23 +9,36 @@ function Profile(user) {
     let data = {
       title: 'Introduce tu contraseña y tu nueva contraseña',
       icon: 'question',
-      inputPassword: 'Contraseña',
-      inputNewPassword: 'Nueva contraseña',
+      input: [
+        {
+          placeholder: 'Contraseña',
+          required: true,
+        },
+        {
+          placeholder: 'Nueva contraseña',
+          required: true
+        }
+      ]
     }
     setData(data);
 
     setPopup(true);
   };
-  
+
   const deleteAccount = () => {
     let data = {
       title: '¿Estás seguro/a?',
       description: 'Está acción no se puede cambiar',
       icon: 'danger',
-      inputPassword: 'Contraseña',
+      input: [
+        {
+          placeholder: 'Contraseña',
+          required: true
+        }
+      ]
     }
     setData(data);
-    
+
     setPopup(true);
   };
 
@@ -40,7 +53,7 @@ function Profile(user) {
       </div>
       <div className='account-data'>
         <p onClick={changePassword} className='danger'>Cambiar contraseña</p>
-        {popup && <Popup data={data} closePopup={closePopup}/>}
+        {popup && <Popup data={data} closePopup={closePopup} />}
         <p onClick={deleteAccount} className='danger'>Borrar cuenta</p>
       </div>
     </div>

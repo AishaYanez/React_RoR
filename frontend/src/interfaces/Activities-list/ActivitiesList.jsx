@@ -4,25 +4,26 @@ import ActivityService from '../../services/Activity/activity.service';
 
 
 function ActivitiesList() {
-  const [activites, setActivities] = useState([]);
+  const [activities, setActivities] = useState([]);
 
   useEffect(() => {
     async function fetchActivities() {
       try {
-        setActivities(await ActivityService.getActivities())
+        const fetchedActivities = (await ActivityService.getActivities()).data;
+        setActivities(fetchedActivities);
       } catch (e) {
-        console.log(e);
+        console.error(e);
       }
     }
 
     fetchActivities();
-  }, [activites]);
+  }, []);
 
   return (
-    <div className="activiest-container">
-      {activites.map((a) =>{
-        <p>{a.name}</p>
-      })}
+    <div className="activities-container">
+      {activities && activities.map((a) => (
+        <p key={a.id}>{a.name}</p>
+      ))}
     </div>
   );
 }
