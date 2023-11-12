@@ -27,8 +27,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_09_160029) do
     t.string "email"
     t.string "password"
     t.string "img"
+    t.string "discriminator"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
 
 end

@@ -5,8 +5,8 @@ const getUsers = () => {
   return http.get('/users');
 };
 
-const getUser = (email, password) => {
-  return http.get(`/users/user?email=${email}&password=${password}`);
+const getUser = (clave) => {
+  return http.get(`/users/user?clave=${clave}`);
 };
 
 const createUser = (data) => {

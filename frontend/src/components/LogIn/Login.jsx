@@ -46,9 +46,9 @@ function Login() {
   ///////////////////////////////////
 
   const submitUser = () => {
-    // let clave = `${user.email}.${user.password}`;
+    let clave = `${user.email}:${user.password}`;
 
-    UserService.getUser(user.email, user.password).then(r => {
+    UserService.getUser(clave).then(r => {
       console.log(r);
       nav('/profile');
     }).catch(e => {

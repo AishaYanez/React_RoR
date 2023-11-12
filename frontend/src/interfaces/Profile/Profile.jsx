@@ -13,18 +13,26 @@ function Profile(user) {
         {
           placeholder: 'Contraseña',
           required: true,
+          type: 'password',
+          error: 'El campo no puede estar vacio'
         },
         {
           placeholder: 'Nueva contraseña',
-          required: true
+          required: true,
+          type: 'password',
+          error: 'El campo no puede estar vacio'
         }
-      ]
+      ],
+      button: {
+        method:'changePassword',
+        value: 'Submit'
+      }
     }
     setData(data);
-
+    
     setPopup(true);
   };
-
+  
   const deleteAccount = () => {
     let data = {
       title: '¿Estás seguro/a?',
@@ -33,9 +41,15 @@ function Profile(user) {
       input: [
         {
           placeholder: 'Contraseña',
-          required: true
+          required: true,
+          type: 'password',
+          error: 'El campo no puede estar vacio'
         }
-      ]
+      ],
+      button: {
+        method:'deleteAccount',
+        value: 'Delete'
+      }
     }
     setData(data);
 
