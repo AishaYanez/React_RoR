@@ -10,27 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_09_160029) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_13_194759) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.integer "places"
+    t.string "name", null: false
+    t.string "description", null: false
+    t.integer "places", null: false
+    t.integer "img", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "direction", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.float "altitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "nickname"
-    t.string "email"
-    t.string "password"
-    t.string "img"
-    t.string "discriminator"
+    t.string "nickname", null: false
+    t.string "img", default: "default_user.png", null: false
+    t.string "discriminator", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
 
