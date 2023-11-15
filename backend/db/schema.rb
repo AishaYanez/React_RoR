@@ -17,8 +17,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_13_194759) do
   create_table "activities", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
+    t.string "img", default: "default_place.png", null: false
+    t.date "date", null: false
     t.integer "places", null: false
-    t.integer "img", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
