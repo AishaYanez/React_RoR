@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import { SearchOutlined } from "@ant-design/icons";
 
 import ActivityService from '../../services/Activity/activity.service';
+
+import './ActivitiesList.css';
 
 
 function ActivitiesList() {
@@ -22,8 +25,18 @@ function ActivitiesList() {
   return (
     <div className="activities-container">
       {activities && activities.map((a) => (
-        <p key={a.id}>{a.name}</p>
+        <div className="activity-card" key={a.id}>
+          <div className="img-container"><img src={`/Imgs/${a.img}`} alt="Imagen descriptiva de la actividad" /></div>
+          <div className="activity-data">
+            <p>{a.name}</p>
+            <p>{a.date}</p>
+          </div>
+          <p className="par-btn">Ver +</p>
+        </div>
       ))}
+      <div className="search-container">
+        <SearchOutlined className="search-sym" />
+      </div>
     </div>
   );
 }
