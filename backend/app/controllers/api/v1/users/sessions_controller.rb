@@ -1,17 +1,12 @@
 class Api::V1::Users::SessionsController < Devise::SessionsController
   include RackSessionFix
-  before_action :auth_basic_auth, only: [:create, :destroy]
+  before_action :auth_basic_auth, only: [:create]
   respond_to :json
 
   def auth_basic_auth
-    if request.method == "POST"
-      credentials = ActionController::HttpAuthentication::Basic.decode_credentials(request)
-      email, password = credentials.split(":")
-      create_session(email, password)
-    elsif request.method == "DELETE"
-      puts "holllllllllllllllllllllllllllllllllllllllllllllllll"
-      destroy_session
-    end
+    credentials = ActionController::HttpAuthentication::Basic.decode_credentials(request)
+    email, password = credentials.split(":")
+    create_session(email, password)
   end
 
   private
@@ -31,7 +26,7 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
     end
   end
 
-  def destroy_session
+  def respond_to_on_destroy
     if current_user
       sign_out(current_user)
       render json: {
