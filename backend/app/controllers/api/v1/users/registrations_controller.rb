@@ -1,20 +1,32 @@
-# frozen_string_literal: true
-
 class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
   include RackSessionFix
+  before_action :auth_basic_auth, only: [:create, :destroy]
   respond_to :json
 
   private
 
-  def respond_with(resource, _opts = {})
-    if request.method == "POST" && resource.persisted?
-      render json: {
-        status: { code: 200, message: "Signed up sucessfully." },
-        data: UserSerializer.new(resource).serializable_hash[:data][:attributes],
-      }, status: :ok
+  def user_params
+    params.require(:user).permit(:nickname, :discriminator)
+  end
+
+  def auth_basic_auth
+    if request.method == "POST"
+      credentials = ActionController::HttpAuthentication::Basic.decode_credentials(request)
+      email, password = credentials.split(":")
+      create_user(email, password)
     elsif request.method == "DELETE"
+      destroy_user
+    end
+  end
+
+  def create_user(email, password)
+    @user = User.new(email: email, password: password, **user_params)
+
+    if @user.save
+      sign_in(@user)
       render json: {
-        status: { code: 200, message: "Account deleted successfully." },
+        status: { code: 200, message: "Signed up successfully." },
+        data: UserSerializer.new(@user).serializable_hash[:data][:attributes],
       }, status: :ok
     else
       render json: {
@@ -23,62 +35,16 @@ class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
-
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
-
-  # POST /resource
-  # def create
-  #   super
-  # end
-
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
-
-  # PUT /resource
-  # def update
-  #   super
-  # end
-
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
-
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
-
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
-
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def destroy_user
+    if current_user
+      current_user.destroy
+      render json: {
+        status: { code: 200, message: "Account deleted successfully." },
+      }, status: :ok
+    else
+      render json: {
+        status: { code: 404, message: "User not found." },
+      }, status: :not_found
+    end
+  end
 end

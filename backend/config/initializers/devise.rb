@@ -9,6 +9,9 @@ Devise.setup do |config|
     ]
     jwt.expiration_time = 90.minutes.to_i
   end
+
+  config.navigational_formats = []
+
   config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
 
   require "devise/orm/active_record"

@@ -1,51 +1,48 @@
-# frozen_string_literal: true
-
 class Api::V1::Users::SessionsController < Devise::SessionsController
   include RackSessionFix
+  before_action :auth_basic_auth, only: [:create, :destroy]
   respond_to :json
 
-  def respond_with(resource, _opts = {})
-    render json: {
-             status: { code: 200, message: "Logged in sucessfully." },
-             data: UserSerializer.new(resource).serializable_hash[:data][:attributes],
-           }, status: :ok
-  end
-
-  def respond_to_on_destroy
-    if current_user
-      render json: {
-               status: 200,
-               message: "logged out successfully",
-             }, status: :ok
-    else
-      render json: {
-               status: 401,
-               message: "Couldn't find an active session.",
-             }, status: :unauthorized
+  def auth_basic_auth
+    if request.method == "POST"
+      credentials = ActionController::HttpAuthentication::Basic.decode_credentials(request)
+      email, password = credentials.split(":")
+      create_session(email, password)
+    elsif request.method == "DELETE"
+      puts "holllllllllllllllllllllllllllllllllllllllllllllllll"
+      destroy_session
     end
   end
 
-  # before_action :configure_sign_in_params, only: [:create]
+  private
 
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def create_session(email, password)
+    self.resource = resource_class.find_for_database_authentication(email: email)
+    if resource && resource.valid_password?(password)
+      sign_in(resource)
+      render json: {
+        status: { code: 200, message: "Logged in successfully." },
+        data: UserSerializer.new(resource).serializable_hash[:data][:attributes],
+      }, status: :ok
+    else
+      render json: {
+        status: { code: 401, message: "Invalid email or password." },
+      }, status: :unauthorized
+    end
+  end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
-
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+  def destroy_session
+    if current_user
+      sign_out(current_user)
+      render json: {
+        status: 200,
+        message: "logged out successfully",
+      }, status: :ok
+    else
+      render json: {
+        status: 401,
+        message: "Couldn't find an active session.",
+      }, status: :unauthorized
+    end
+  end
 end
