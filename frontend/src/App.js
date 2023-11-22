@@ -16,16 +16,16 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
+      <Header />
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/" element={<Auth />} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/activities" element={<ActList/>} />
         </Routes>
-      </BrowserRouter>
         <Footer />
+      </BrowserRouter>
     </div>
   );
 }

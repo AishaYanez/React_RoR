@@ -1,11 +1,13 @@
-import UserService from '../../services/User/user.service';
+
+
+import AuthService from '../../services/Auth/auth.service';
 import './Singup.css';
 
 import { useState } from "react";
 
-function Singup({changeForm}) {
+function Singup({ changeForm }) {
 
-  const [newUser, setNewUser] = useState({ newNickname: "", newEmail: "", newPassword: "", passwordRepeat:"" });
+  const [newUser, setNewUser] = useState({ newNickname: "", newEmail: "", newPassword: "", passwordRepeat: "" });
   const [voidError, setVoidError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -22,10 +24,10 @@ function Singup({changeForm}) {
 
   ////////    VALIDACION DEL FORM     //////////
   const validatePassword = (error) => {
+    //Las contraseñas no pueden tener espacios vacios
     if (newUser.newPassword !== newUser.passwordRepeat) {
       setPasswordError("Las contraseñas no son iguales");
       error = true;
-
     } else {
       setPasswordError("");
     }
@@ -35,11 +37,10 @@ function Singup({changeForm}) {
 
   const validateEmailEstructure = (error) => {
     const emailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-    
+
     if (!emailRegex.test(newUser.newEmail)) {
       setEmailError("La estructura de esté correo no es válida. Ex: user@example.com");
       error = true;
-      
     } else {
       setEmailError("");
     }
@@ -47,10 +48,19 @@ function Singup({changeForm}) {
     return error;
   }
 
+  const validateSpacePassword = (error) => {
+    if(newUser.newPassword.includes(" ")){
+      setPasswordError("La contraseña no puede contener espacios");
+      error = true;
+    }
+
+    return error
+  }
+
   const validateVoid = (error) => {
 
     if (newUser.newNickname === "" || newUser.newEmail === ""
-    ||newUser.newPassword === "" ||newUser.passwordRepeat === "") {
+      || newUser.newPassword === "" || newUser.passwordRepeat === "") {
       setVoidError('Rellena todos los campos');
       error = true;
 
@@ -67,6 +77,7 @@ function Singup({changeForm}) {
     errorInputs = validateVoid(errorInputs);
     errorInputs = validateEmailEstructure(errorInputs);
     errorInputs = validatePassword(errorInputs);
+    errorInputs = validateSpacePassword(errorInputs);
 
     if (!errorInputs) {
       submitUser();
@@ -76,18 +87,24 @@ function Singup({changeForm}) {
   /////////////////////
 
   const submitUser = () => {
-    let data = new FormData();
-    data.append('user[nickname]',newUser.newNickname);
-    // data.append('user[clave]`',`${newUser.newEmail}.${newUser.newPassword}`);
-    data.append('user[email]',newUser.newEmail)
-    data.append('user[password]',newUser.newPassword)
+    let discriminator = newUser.newEmail.includes('@stillhigher.es') ? 'Employee' : 'Client';
     
-    UserService.createUser(data).then(r => {
-      console.log(r);
-      changeForm();
-    }).catch(e => {
-      console.log(e);
-    });
+    let userData = {
+      user: {
+        nickname: newUser.newNickname,
+        discriminator: discriminator
+      }
+    };
+
+    let credentials = btoa(`${newUser.newEmail}:${newUser.newPassword}`);
+
+    AuthService.createAccount(credentials, userData)
+      .then(r => {
+        changeForm()
+        console.log(r.data);
+      }).catch(e => {
+        console.error(e);
+      });
   }
 
   return (
@@ -95,8 +112,8 @@ function Singup({changeForm}) {
       <h2>Sing Up</h2>
       <form >
         <span>{voidError}</span>
-        <input placeholder='Nickname' id='newNickname'  onChange={updateData} type='text' value={newUser.nickname} />
-        <span>{}</span>
+        <input placeholder='Nickname' id='newNickname' onChange={updateData} type='text' value={newUser.nickname} />
+        <span>{ }</span>
         <input placeholder='Email' id='newEmail' onChange={updateData} type='email' value={newUser.newEmail} />
         <span>{emailError}</span>
         <input placeholder='Contraseña' id='newPassword' onChange={updateData} type='password' value={newUser.newPassword} />

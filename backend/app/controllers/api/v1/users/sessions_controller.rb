@@ -18,6 +18,7 @@ class Api::V1::Users::SessionsController < Devise::SessionsController
       render json: {
         status: { code: 200, message: "Logged in successfully." },
         data: UserSerializer.new(resource).serializable_hash[:data][:attributes],
+        token: request.env["warden-jwt_auth.token"],
       }, status: :ok
     else
       render json: {
