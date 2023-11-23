@@ -14,39 +14,44 @@ function Popup(props) {
     props.closePopup();
   };
 
-  const validateInput = () => {
-    let condition = formError;
+  const validateInput = (method) => {
+    let condition = false;
+    let inputs = [];
     document.getElementsByName('input').forEach((i) => {
-      while (!condition) {
         if (i.value === "" || i.value.includes(' ')) {
           condition = true;
           setFormError(true);
-        }
+      } else {
+        inputs.push(i.value);
       }
     });
-  };
 
-  const deleteAccount  = () => {
-
-  };
-
-  const changePassword = () => {
-
+    if(!condition){
+      console.log(inputs);
+      method(inputs);
+      setFormError(false);
+    }
   };
 
   return (
-    <form className='popup-container'>
-      {props.data.icon === 'question' && <Question className='question'/>}
-      {props.data.icon === 'danger' && <Exclamation className='danger'/>}
-      <p>{props.data.title}</p>
+    <form className='popup'>
+      {props.data.icon === 'question' && <Question className='question icon' />}
+      {props.data.icon === 'danger' && <Exclamation className='danger icon' />}
+      <h3 className='title-popup'>{props.data.title}</h3>
       {formError && <span>{props.data.error}</span>}
-      {props.data.input.map((i, index) => (
+      {props.data.input.map((i, index) =>
+        (
         <React.Fragment key={index}>
-          <input  type={i.type} name='input' placeholder={i.placeholder} required={i.required}/>
+          <div className='input-container'>
+            <input type={i.type} name='input' placeholder={i.placeholder} required={i.required}/>
+          </div>
         </React.Fragment>
-      ))}
-      <input onClick={validateInput} type='button' className="btn-accept" defaultValue={props.data.button.value} readOnly/>
-      <input type='button' className="btn-close" onClick={close} defaultValue='Cancel' readOnly/>
+      )
+      )}
+      <div className="btns">
+        <input className="btn btn-accept" onClick={() => validateInput(props.data.button.method)} type='button' defaultValue={props.data.button.value} readOnly />
+        <input type='button' className="btn btn-cancel" onClick={close} defaultValue='Cancelar' readOnly />
+      </div>
     </form>
   );
 }
