@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
-import UserService from '../../services/User/user.service';
 import '../SingUp/Singup.css'
+import AuthService from '../../services/Auth/auth.service';
 
 
 function Login() {
@@ -46,13 +46,14 @@ function Login() {
   ///////////////////////////////////
 
   const submitUser = () => {
-    let clave = `${user.email}:${user.password}`;
+    let credentials =  btoa(`${user.email}:${user.password}`);
 
-    UserService.getUser(clave).then(r => {
-      console.log(r);
-      nav('/profile');
+    AuthService.loginUser(credentials)
+    .then(r => {
+      nav('/profile')
+      console.log(r.data);
     }).catch(e => {
-      console.log(e);
+      console.error(e);
     });
   }
 
