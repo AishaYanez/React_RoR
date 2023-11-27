@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_24_153920) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_24_190611) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,6 +48,16 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_153920) do
     t.string "image", default: "default_place.png", null: false
     t.date "date", null: false
     t.integer "places", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name", default: "default_user.png"
+    t.string "surname"
+    t.string "dni"
+    t.date "birthdate"
+    t.integer "cardnumber"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
