@@ -4,8 +4,10 @@ one:
   name: MyString
   description: MyString
   places: 1
+  date: 2023-01-01
 
 two:
   name: MyString
   description: MyString
   places: 1
+  date: 2023-01-01
