@@ -3,24 +3,34 @@ class User < ApplicationRecord
 
   self.inheritance_column = :discriminator
 
-  def self.create_with_subclass(attributes)
-    subclass = subclass_for_discriminator(attributes["discriminator"])
-    subclass.create(attributes.except(:discriminator))
-  end
+  # def self.create_with_subclass(attributes)
+  #   discriminator = attributes.delete("discriminator")
+  #   subclass = subclass_for_discriminator(discriminator)
 
-  private
+  #   # Crea la instancia de la subclase con todos los atributos
+  #   instance = subclass.new(attributes)
 
-  def self.subclass_for_discriminator(discriminator)
-    puts "Nuevo usuario------------------//////////// #{discriminator}"
-    case discriminator
-    when "Client"
-      Client
-    when "Employee"
-      Employee
-    else
-      raise "Unknown discriminator: #{discriminator}"
-    end
-  end
+  #   # Intenta guardar la instancia y devuelve el resultado
+  #   if instance.save
+  #     instance
+  #   else
+  #     instance.errors.full_messages
+  #   end
+  # end
+
+  # private
+
+  # def self.subclass_for_discriminator(discriminator)
+  #   puts "Nuevo usuario------------------//////////// #{discriminator}"
+  #   case discriminator
+  #   when "Client"
+  #     Client
+  #   when "Employee"
+  #     Employee
+  #   else
+  #     raise "Unknown discriminator: #{discriminator}"
+  #   end
+  # end
 
   devise :database_authenticatable, :registerable, :validatable, :jwt_authenticatable, jwt_revocation_strategy: self
 end
