@@ -1,4 +1,4 @@
-class Api::V1::Users::SessionsController < Devise::SessionsController
+class Api::V1::Sessions::SessionsController < Devise::SessionsController
   include RackSessionFix
   before_action :auth_basic_auth, only: [:create]
   respond_to :json

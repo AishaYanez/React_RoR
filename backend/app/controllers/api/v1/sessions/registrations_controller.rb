@@ -1,4 +1,4 @@
-class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
+class Api::V1::Sessions::RegistrationsController < Devise::RegistrationsController
   include RackSessionFix
   before_action :auth_basic_auth, only: [:create, :destroy]
   respond_to :json
@@ -21,6 +21,7 @@ class Api::V1::Users::RegistrationsController < Devise::RegistrationsController
 
   def create_user(email, password)
     @user = User.new(email: email, password: password, **user_params)
+    # @user = User.create_with_subclass(email: email, password: password, **user_params)
 
     if @user.save
       sign_in(@user)
