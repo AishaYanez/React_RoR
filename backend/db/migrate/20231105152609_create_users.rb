@@ -4,9 +4,13 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.string :nickname, null: false
       t.string :img, null: false, default: "default_user.png"
       t.string :discriminator, null: false, default: "Client"
+      t.string :name
+      t.string :surname
+      t.string :dni
 
       t.timestamps null: false
     end
     add_index :users, :nickname, unique: true
+    # add_index :users, :dni, unique: true
   end
 end

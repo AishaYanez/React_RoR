@@ -1,4 +1,4 @@
-class Api::V1::ActivitiesController < ApplicationController
+class Api::V1::Activities::ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show update destroy ]
 
   # GET /activities
@@ -47,6 +47,6 @@ class Api::V1::ActivitiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def activity_params
-    params.require(:activity).permit(:name, :description, :places)
+    params.require(:activity).permit(:name, :description, :date, :places, :image)
   end
 end
