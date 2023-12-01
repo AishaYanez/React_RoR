@@ -9,7 +9,9 @@ Rails.application.routes.draw do
         resources :users, only: [:index, :update]
         resources :clients
       end
-      resources :activities
+      namespace :activities, path: "" do
+        resources :activities
+      end
     end
   end
 end
