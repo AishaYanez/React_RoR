@@ -48,6 +48,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_190611) do
     t.string "image", default: "default_place.png"
     t.date "date", null: false
     t.integer "places", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "clients", force: :cascade do |t|

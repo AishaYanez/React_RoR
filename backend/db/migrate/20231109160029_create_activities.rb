@@ -7,7 +7,7 @@ class CreateActivities < ActiveRecord::Migration[7.1]
       t.date :date, null: false
       t.integer :places, null: false
 
-      # t.timestamps
+      t.timestamps
     end
   end
 end
