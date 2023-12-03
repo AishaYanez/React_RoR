@@ -34,9 +34,8 @@ const loginUser = (credentials) => {
       Authorization: `Basic ${credentials}`
     }
   }).then(res => {
-    console.log(res.data.token);
     setToken(res.data.token)
-    return res;
+    return res.data;
   });
 };
 

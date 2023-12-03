@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext  } from "../../context/AuthContext/AuthContext";
 
 import '../SingUp/Singup.css'
 import AuthService from '../../services/Auth/auth.service';
@@ -7,6 +8,7 @@ import AuthService from '../../services/Auth/auth.service';
 
 function Login() {
   const nav = useNavigate();
+  const userStatus = useContext(AuthContext);
 
   const [user, setUser] = useState({ email: "", password: "" });
   const [voidLoginError, setVoidError] = useState("");
@@ -21,7 +23,6 @@ function Login() {
   ////////     VALIDATE FORM PRE-POST      ////////
 
   const validateVoid = (error) => {
-
     if (user.email === "" || user.password === "") {
       setVoidError("Rellena todos los campos");
       error = true;
@@ -50,8 +51,8 @@ function Login() {
 
     AuthService.loginUser(credentials)
     .then(r => {
-      nav('/profile')
-      console.log(r.data);
+      nav('/activities')
+      userStatus[1](r.data);
     }).catch(e => {
       console.error(e);
     });
