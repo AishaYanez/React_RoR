@@ -6,7 +6,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :users, path: "" do
-        resources :users, only: [:index, :update]
+        resources :users, only: [:index, :update] do
+          put "update_password", on: :member
+          # put "update", on: :member
+        end
         resources :employees
         resources :clients
       end

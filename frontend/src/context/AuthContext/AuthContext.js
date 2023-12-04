@@ -17,13 +17,13 @@ export function AuthProvider({ children }) {
     } else {
       if (!user.admin) {
         setUserStatus('employee');
+        console.log('employee');
       } else {
+        console.log('admin');
         setUserStatus('admin');
       }
     }
     setUserData(user);
-    console.log(userData);
-    console.log(userStatus);
   };
 
   const logoutContext = () => {

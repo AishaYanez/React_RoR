@@ -1,5 +1,6 @@
 class Api::V1::Users::UsersController < ApplicationController
-  before_action :auth_basic_auth, only: [:update]
+  # before_action :auth_basic_auth, only: [:update_password]
+  before_action :set_user, only: [:update]
 
   def auth_basic_auth
     set_user
@@ -13,21 +14,29 @@ class Api::V1::Users::UsersController < ApplicationController
     render json: @users
   end
 
-  def update(oldPassword, newPassword)
-    if @user.valid_password?(oldPassword)
-      if @user.update(password: newPassword)
-        render json: {
-                 status: { code: 200, message: "Contraseña cambiada correctamente" },
-                 data: @user.as_json,
-               }, status: :ok
-      else
-        render json: { error: "Algo a fallado" }, status: :unprocessable_entity
-      end
+  # def update_password(oldPassword, newPassword)
+  #   if @user.valid_password?(oldPassword)
+  #     if @user.update(password: newPassword)
+  #       render json: {
+  #                status: { code: 200, message: "Contraseña cambiada correctamente" },
+  #                data: @user.as_json,
+  #              }, status: :ok
+  #     else
+  #       render json: { error: "Algo a fallado" }, status: :unprocessable_entity
+  #     end
+  #   else
+  #     render json: {
+  #              status: 401,
+  #              message: "La contraseña no es correcta",
+  #            }, status: :unauthorized
+  #   end
+  # end
+
+  def update
+    if @user.update(user_params)
+      render json: @user
     else
-      render json: {
-               status: 401,
-               message: "La contraseña no es correcta",
-             }, status: :unauthorized
+      render json: @user.errors, status: :unprocessable_entity
     end
   end
 
@@ -105,6 +114,6 @@ class Api::V1::Users::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :discriminator, :img)
+    params.require(:user).permit(:nickname, :discriminator, :img, :admin)
   end
 end
