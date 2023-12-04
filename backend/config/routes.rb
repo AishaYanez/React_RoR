@@ -11,7 +11,9 @@ Rails.application.routes.draw do
         resources :employees
         resources :clients
       end
-      resources :activities
+      namespace :activities, path: "" do
+        resources :activities
+      end
     end
   end
 end
