@@ -26,7 +26,7 @@ function ActivitiesList() {
     <div className="activities-container">
       {activities && activities.map((a) => (
         <div className="activity-card" key={a.id}>
-          <div className="img-container"><img src={`/Imgs/${a.img}`} alt="Imagen descriptiva de la actividad" /></div>
+          <div className="img-container"><img src={a.image.url} alt="Imagen descriptiva de la actividad" /></div>
           <div className="activity-data">
             <p>{a.name}</p>
             <p>{a.date}</p>
