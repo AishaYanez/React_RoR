@@ -47,6 +47,6 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def activity_params
-    params.require(:activity).permit(:name, :description, :date, :places, :image)
+    params.require(:activity).permit(:name, :description, :date, :places, :image, :user_id)
   end
 end
