@@ -5,7 +5,9 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
     activity = Activity.find(params[:id])
     user_ids = params[:user_ids]
 
-    activity.users << Employee.where(id: user_ids)
+    new_users = Employee.where(id: user_ids).where.not(id: activity.user_ids)
+
+    activity.users << new_users.where.not(id: activity.user_id)
 
     render json: { message: "Empleados agregados a la actividad con éxito" }
   end
