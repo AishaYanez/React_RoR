@@ -7,10 +7,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :users, path: "" do
         resources :users, only: [:index, :update]
+        resources :employees
         resources :clients
       end
       namespace :activities, path: "" do
-        resources :activities
+        resources :activities do
+          post "add_users", on: :member
+        end
       end
     end
   end
