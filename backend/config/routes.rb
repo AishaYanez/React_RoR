@@ -11,7 +11,9 @@ Rails.application.routes.draw do
         resources :clients
       end
       namespace :activities, path: "" do
-        resources :activities
+        resources :activities do
+          post "add_users", on: :member
+        end
       end
     end
   end
