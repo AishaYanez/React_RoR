@@ -30,7 +30,7 @@ function App() {
           <Route path="/" element={<Auth />} />
           <Route
             path="/profile"
-            element={userContext !== 'visit' ? <Profile /> : <Navigate to="/" />}
+            element={userContext[0] !== 'visit' ? <Profile /> : <Navigate to="/" />}
           />
           <Route path="/activities" element={<ActList />} />
         </Routes>
