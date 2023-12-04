@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :users, path: "" do
         resources :users, only: [:index, :update]
+        resources :settings
+        resources :employees
         resources :clients
       end
       namespace :activities, path: "" do
