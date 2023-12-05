@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::JTIMatcher
-  has_and_belongs_to_many :activities
+  has_and_belongs_to_many :activitiesAssisted, join_table: :employees_activitiesAssisted, class_name: "Activity"
+  has_and_belongs_to_many :activitiesRegistered, join_table: :clients_activitiesRegistered, class_name: "Activity"
   self.inheritance_column = :discriminator
 
   has_one :setting, dependent: :destroy
