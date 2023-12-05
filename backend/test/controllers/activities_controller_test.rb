@@ -13,7 +13,7 @@ class ActivitiesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create activity" do
     assert_difference("Activity.count") do
-      post api_v1_activities_activities_url, params: { activity: { description: @activity.description, name: @activity.name, places: @activity.places, date: nil } }, as: :json
+      post api_v1_activities_activities_url, params: { activity: { description: @activity.description, name: @activity.name, places: @activity.places, date: @activity.date } }, as: :json
     end
 
     assert_response :created

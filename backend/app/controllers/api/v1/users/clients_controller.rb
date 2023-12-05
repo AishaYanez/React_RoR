@@ -1,3 +1,4 @@
+
 class Api::V1::Users::ClientsController < ApplicationController
   before_action :set_client, only: %i[update show]
 
