@@ -1,6 +1,17 @@
 class Api::V1::Activities::ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show update destroy ]
 
+  def add_users
+    activity = Activity.find(params[:id])
+    user_ids = params[:user_ids]
+
+    new_users = Employee.where(id: user_ids).where.not(id: activity.user_ids)
+
+    activity.users << new_users.where.not(id: activity.user_id)
+
+    render json: { message: "Empleados agregados a la actividad con éxito" }
+  end
+
   # GET /activities
   def index
     @activities = Activity.all
@@ -47,6 +58,6 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def activity_params
-    params.require(:activity).permit(:name, :description, :date, :places, :image)
+    params.require(:activity).permit(:name, :description, :date, :places, :image, :user_id, :users_ids)
   end
 end
