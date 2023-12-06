@@ -87,7 +87,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_155044) do
 
   create_table "users", force: :cascade do |t|
     t.string "nickname", null: false
-    t.string "img", default: "default_user.png", null: false
+    t.string "image", default: "default_user.png", null: false
     t.string "discriminator", default: "Client", null: false
     t.string "name"
     t.string "surname"
