@@ -13,7 +13,7 @@ class Api::V1::Users::UsersController < ApplicationController
     render json: @users
   end
 
-  def update_password(oldPassword, newPassword)
+  def update(oldPassword, newPassword)
     if @user.valid_password?(oldPassword)
       if @user.update(password: newPassword)
         render json: {

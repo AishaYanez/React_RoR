@@ -21,6 +21,7 @@ class Api::V1::Sessions::RegistrationsController < Devise::RegistrationsControll
 
   def create_user(email, password)
     @user = User.new(email: email, password: password, **user_params)
+    # @user = User.create_with_subclass(email: email, password: password, **user_params)
 
     if @user.save
       sign_in(@user)
