@@ -1,4 +1,3 @@
-
 class Api::V1::Users::ClientsController < ApplicationController
   before_action :set_client, only: %i[update show]
 
@@ -23,22 +22,6 @@ class Api::V1::Users::ClientsController < ApplicationController
     end
   end
 
-  # # POST /clients
-  # def create
-  #   @client = Client.new(client_params)
-
-  #   if @client.save
-  #     render json: @client, status: :created, location: @client
-  #   else
-  #     render json: @client.errors, status: :unprocessable_entity
-  #   end
-  # end
-
-  # # DELETE /clients/1
-  # def destroy
-  #   @client.destroy!
-  # end
-
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -48,6 +31,6 @@ class Api::V1::Users::ClientsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def client_params
-    params.require(:client).permit(:name, :surname, :dni, :birthdate, :cardnumber)
+    params.require(:client).permit(:name, :surname, :dni, :birthdate, :cardnumber, :image)
   end
 end

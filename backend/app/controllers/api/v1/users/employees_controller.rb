@@ -31,23 +31,6 @@ class Api::V1::Users::EmployeesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def employee_params
-    params.require(:employee).permit(:admin, :name, :surname, :dni, :profession)
+    params.require(:employee).permit(:admin, :name, :surname, :dni, :profession, :image)
   end
-
-  # # POST /employees
-  # def create
-  #   @employee = Employee.new(employee_params)
-
-  #   if @employee.save
-  #     render json: @employee, status: :created, location: @employee
-  #   else
-  #     render json: @employee.errors, status: :unprocessable_entity
-  #   end
-  # end
-
-  # # DELETE /employees/1
-  # def destroy
-  #   @employee.destroy!
-  # end
-
 end

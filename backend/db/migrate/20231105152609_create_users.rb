@@ -2,7 +2,7 @@ class CreateUsers < ActiveRecord::Migration[7.1]
   def change
     create_table :users do |t|
       t.string :nickname, null: false
-      t.string :img, null: false, default: "default_user.png"
+      t.string :image, null: false, default: "default_user.png"
       t.string :discriminator, null: false, default: "Client"
       t.string :name
       t.string :surname
@@ -11,6 +11,5 @@ class CreateUsers < ActiveRecord::Migration[7.1]
       t.timestamps null: false
     end
     add_index :users, :nickname, unique: true
-    # add_index :users, :dni, unique: true
   end
 end
