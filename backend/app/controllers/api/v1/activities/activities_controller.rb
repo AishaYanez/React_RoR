@@ -1,15 +1,30 @@
 class Api::V1::Activities::ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show update destroy ]
 
-  def add_users
+  def add_employees
     activity = Activity.find(params[:id])
-    user_ids = params[:user_ids]
+    employee_ids = params[:employee_ids]
 
-    new_users = Employee.where(id: user_ids).where.not(id: activity.user_ids)
+    new_employees = Employee.where(id: employee_ids).where.not(id: activity.user_id).where.not(id: activity.employee_ids)
 
-    activity.users << new_users.where.not(id: activity.user_id)
+    if new_employees.any? && activity.employees.concat(new_employees)
+      render json: { message: "Empleados agregados a la actividad con éxito" }
+    else
+      render json: { message: "Algo falla" }
+    end
+  end
 
-    render json: { message: "Empleados agregados a la actividad con éxito" }
+  def add_clients
+    activity = Activity.find(params[:id])
+    client_ids = params[:client_id]
+
+    new_clients = Client.where(id: client_ids).where.not(id: activity.user_id)
+
+    if new_clients.any? && activity.clients.concat(new_clients)
+      render json: { message: "Clientes agregados a la actividad con éxito" }
+    else
+      render json: { message: "Algo falla" }
+    end
   end
 
   # GET /activities
@@ -58,6 +73,6 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def activity_params
-    params.require(:activity).permit(:name, :description, :date, :places, :image, :user_id, :users_ids)
+    params.require(:activity).permit(:name, :description, :date, :places, :image, :user_id, :employee_ids, :client_id)
   end
 end

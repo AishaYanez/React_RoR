@@ -7,7 +7,10 @@ class ActivitySerializer < ActiveModel::Serializer
   end
 
   attribute :assistants do |activity|
-    ActiveModel::SerializableResource.new(activity.object.users, each_serializer: EmployeeSerializer).as_json
+    ActiveModel::SerializableResource.new(activity.object.employees, each_serializer: EmployeeSerializer).as_json
+  end
+  attribute :clients do |activity|
+    ActiveModel::SerializableResource.new(activity.object.clients, each_serializer: ClientSerializer).as_json
   end
 
   def image
