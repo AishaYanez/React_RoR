@@ -58,6 +58,7 @@
   border-radius: 3px;
   color: #EAF6FF;
   width: 80px;
+  cursor: pointer;
 }
 
 .btn-accept {

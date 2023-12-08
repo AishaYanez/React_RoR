@@ -11,21 +11,20 @@ export function AuthProvider({ children }) {
   const [userData, setUserData] = useState();
 
   const loginContext = (user) => {
-    console.log(user);
     if (!user.email.includes('@stillhigher.es')) {
       setUserStatus('client');
     } else {
       if (!user.admin) {
+        // console.log('employee');
         setUserStatus('employee');
-        console.log('employee');
       } else {
-        console.log('admin');
+        // console.log('admin');
         setUserStatus('admin');
       }
     }
     setUserData(user);
   };
-
+  
   const logoutContext = () => {
     setUserStatus('visit');
   };

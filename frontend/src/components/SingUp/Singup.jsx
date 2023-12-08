@@ -110,7 +110,7 @@ function Singup({ changeForm }) {
   return (
     <>
       <h2>Sing Up</h2>
-      <form >
+      <form className='user-form'>
         <span>{voidError}</span>
         <input placeholder='Nickname' id='newNickname' onChange={updateData} type='text' value={newUser.nickname} />
         <span>{ }</span>

@@ -1,0 +1,34 @@
+.activity-form {
+  position: absolute;
+  background-color: #232528;
+  width: 90%;
+  max-width: 400px;
+  margin: 10px 20px 10px 0px;
+  z-index: 1;
+  border-radius: 0 10px 10px 0;
+  left: -450px;
+  transition: left 0,3s ease;
+  padding: 20px 0px;
+}
+
+.show {
+  position: relative;
+  left: 0px;
+}
+
+h3 {
+  color: #EAEFFF;
+}
+
+.activity-form > input {
+  width: 75%;
+  margin: 10px;
+  border: none;
+  font-size: 16px;
+  padding: 2px 0px 1px 4px;
+}
+
+.activity-form>input:focus {
+  outline: none;
+  transform: scale(1.05);
+}
