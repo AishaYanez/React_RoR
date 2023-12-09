@@ -6,7 +6,7 @@ import Auth from './interfaces/Auth/Auth';
 import Profile from './interfaces/Profile/Profile';
 import ActList from './interfaces/Activities-list/ActivitiesList';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 
 import {
@@ -16,15 +16,24 @@ import {
   Navigate
 } from 'react-router-dom';
 
-import {AuthProvider, AuthContext } from './context/AuthContext/AuthContext';
+import { AuthProvider, AuthContext } from './context/AuthContext/AuthContext';
+import AuthService from './services/Auth/auth.service';
 
 function App() {
   const userContext = useContext(AuthContext);
 
+  useEffect(() => {
+    AuthService.checkAuth().then(res => {
+      userContext[1](res);
+    }).catch(
+      err => console.error(err)
+    );
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/" element={<Auth />} />
@@ -43,7 +52,7 @@ function App() {
 function AddProviderApp() {
   return (
     <AuthProvider>
-      <App/>
+      <App />
     </AuthProvider>
   );
 }

@@ -19,12 +19,14 @@ const setToken = (token) => {
 };
 
 const checkAuth = () => {
-  return http.post('/users/current_user', {
+  return http.get('/current_user', {
     headers: {
       ...http.defaults.headers.common,
-      Authorization: getToken()
+      Authorization: `Bearer ${getToken()}`
     }
-  });
+  }).then(res => {
+    return res.data;
+  })
 };
 
 const loginUser = (credentials) => {
@@ -36,6 +38,8 @@ const loginUser = (credentials) => {
   }).then(res => {
     setToken(res.data.token)
     return res.data;
+  }).catch(error => {
+    return error
   });
 };
 

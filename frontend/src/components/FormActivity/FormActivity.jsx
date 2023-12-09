@@ -1,8 +1,13 @@
 import './FormActivity.css';
 
-function FormActivity() {
+function FormActivity(props) {
+  
+  const closeActivityForm = () => {
+    props.setStatusForm('hidden');
+  }
+  
   return (
-      <form className={'activity-form ${show}'} action="">
+      <form className={`activity-form ${props.statusForm}`} action="">
         <h3>Actividad</h3>
         <input name="activityName" type="text" />
         <input name="activityDescription" type="text" />
@@ -15,7 +20,7 @@ function FormActivity() {
 
         <div className='btns'>
           <input defaultValue='Añadir' className='btn-accept btn' type="button" />
-          <input defaultValue='Cancelar' className='btn-cancel btn' type="button" />
+          <input onClick={closeActivityForm} defaultValue='Cerrar' className='btn-cancel btn' type="button" />
         </div>
       </form>
   );

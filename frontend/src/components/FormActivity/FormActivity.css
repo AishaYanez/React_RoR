@@ -1,5 +1,5 @@
 .activity-form {
-  position: absolute;
+  position: fixed;
   background-color: #232528;
   width: 90%;
   max-width: 400px;
@@ -7,12 +7,11 @@
   z-index: 1;
   border-radius: 0 10px 10px 0;
   left: -450px;
-  transition: left 0,3s ease;
+  transition: left 0.7s ease;
   padding: 20px 0px;
 }
 
 .show {
-  position: relative;
   left: 0px;
 }
 
