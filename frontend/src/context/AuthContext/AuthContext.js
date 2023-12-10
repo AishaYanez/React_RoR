@@ -8,9 +8,10 @@ export const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
   const [userStatus, setUserStatus] = useState('visit');
-  // const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState();
 
   const loginContext = (user) => {
+    console.log(user);
     if (!user.email.includes('@stillhigher.es')) {
       setUserStatus('client');
     } else {
@@ -20,7 +21,7 @@ export function AuthProvider({ children }) {
         setUserStatus('admin');
       }
     }
-    // setUserData(user);
+    setUserData(user);
   };
   
   const logoutContext = () => {
@@ -28,7 +29,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={[userStatus, loginContext, logoutContext]}>
+    <AuthContext.Provider value={[userStatus, loginContext, logoutContext, userData, setUserData]}>
       {children}
     </AuthContext.Provider>
   );

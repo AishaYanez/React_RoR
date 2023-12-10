@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
+import {AuthContext} from '../../context/AuthContext/AuthContext'
 
 import Popup from '../../components/PopUp/Popup'
 import './Profile.css';
+import AuthService from "../../services/Auth/auth.service";
 
-function Profile(user) {
+function Profile() {
+  
+  const nav = useNavigate();
+  
   const [data, setData] = useState({});
   const [popup, setPopup] = useState(false);
-
+  const userContext = useContext(AuthContext);
+  const userData = userContext[3];
 
   //Create PopUp for change password
   const changePassword = () => {
@@ -58,6 +65,10 @@ function Profile(user) {
         method: (val) => {
           console.log('delete');
           console.log(val[0]);
+          AuthService.deleteAccount().then(
+            nav('/auth')
+            ).catch(err => console.error(err))
+          closePopup()
         },
         value: 'Borrar'
       }
@@ -75,8 +86,8 @@ function Profile(user) {
       <div className="settings-container">
       </div>
       <div className='account-data'>
-        <p onClick={changePassword} className='danger'>Cambiar contraseña</p>
-        <p onClick={deleteAccount} className='danger'>Borrar cuenta</p>
+        <p onClick={changePassword} className='data-change'>Cambiar contraseña</p>
+        <p onClick={deleteAccount} className='data-change'>Borrar cuenta</p>
       </div>
       <div className="popup-container">
         {popup && <Popup data={data} closePopup={closePopup} />}
