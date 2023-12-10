@@ -4,10 +4,11 @@ import ActivityService from "../../services/Activity/activity.service";
 import './FormActivity.css';
 
 function FormActivity(props) {
+  const { activityData, setActivityData, statusForm, setStatusForm } = props;
   const [employees, setEmployees] = useState([]);
 
   const closeActivityForm = () => {
-    props.setStatusForm('hidden');
+    setStatusForm('hidden');
   };
 
   async function fetchEmployees() {
@@ -23,31 +24,68 @@ function FormActivity(props) {
     fetchEmployees();
   }, []);
 
-  const addActivity = () => {
-    console.log(props.activityData);
-    const newActivity = props.activityData;
-    ActivityService.createActivity(newActivity).then( res => console.log('ok')).catch(error => console.error('No ok'));
+  const handleInputChange = (e) => {
+    
+    const { name, value } = e.target;
+    setActivityData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
+
+  const addActivity = () => {
+    const newActivity = formattedActivity();
+    
+    ActivityService.createActivity(newActivity).then( res => console.log('ok')).catch(error => console.error('No ok ' + error));
+  };
+
+  const editActivity = () => {
+    const activity = formattedActivity();
+    let id = activityData.activityId
+    
+    ActivityService.updateActivity(id, activity).then( res => console.log('ok')).catch(error => console.error(error));
+  }
+
+  const formattedActivity = () => {
+    return {
+      name: activityData.activityName,
+      description: activityData.activityDescription,
+      date: activityData.activityDate,
+      image: activityData.activityImage,
+      user_id:activityData.activityCoordinator,
+      assistants: [],
+      places: activityData.activityPlaces
+    };
+  }
   
   return (
-      <form className={`activity-form ${props.statusForm}`} action="">
+      <form className={`activity-form ${statusForm}`} action="">
         <h3>Actividad</h3>
-        <input value={props.activityData.name} name="activityName" type="text" />
-        <input value={props.activityData.description} name="activityDescription" type="text" />
-        <input value={props.activityData.date} name="activityDate" type="date" />
-        <input value={props.activityData.places} name="activityNumPlace" type="number" />
-        {/* <input value={} name="activityLocation" type="text" /> */}
-        <select value={props.activityData.user_id} name="activityCoordinator" id="activityCoordinator">
+        <input onChange={handleInputChange} value={activityData.activityName} name="activityName" type="text" />
+        <input onChange={handleInputChange} value={activityData.activityDescription} name="activityDescription" type="text" />
+        <input onChange={handleInputChange} value={activityData.activityDate} name="activityDate" type="date" />
+        <input onChange={handleInputChange} value={activityData.activityPlaces} name="activityPlaces" type="number" />
+
+        <select onChange={handleInputChange} value={activityData.activityCoordinator} name="activityCoordinator" id="activityCoordinator">
+          <option value="" disabled>Coordinador</option>
           {employees && employees.map((e) => (
             <option key={e.id} value={e.id}>{e.nickname}</option>
           ))}
         </select>
-        {/* <input name="activityAssistants" type="text" /> */}
-        {/* <input name="activityImage" type="file" /> */}
+
+        <select onChange={handleInputChange} name="activityAssistants" id="activityAssitants">
+          <option value="" disabled>Asistentes</option>
+          {employees && employees.map((e) => (
+            <option key={e.id} value={e.id}>{e.nickname}</option>
+          ))}
+        </select>
 
         <div className='btns'>
-          <input onClick={addActivity} defaultValue='Añadir' className='btn-accept btn' type="button" />
+          {!activityData.activityId && <input onClick={addActivity} defaultValue='Añadir' className='btn-accept btn' type="button" />}
+          {activityData.activityId && <input onClick={editActivity} defaultValue='Editar' className='btn-accept btn' type="button" />}
           <input onClick={closeActivityForm} defaultValue='Cerrar' className='btn-cancel btn' type="button" />
+          <span>
+          </span>
         </div>
       </form>
   );

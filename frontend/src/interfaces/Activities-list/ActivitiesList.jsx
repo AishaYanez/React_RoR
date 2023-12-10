@@ -44,28 +44,28 @@ function ActivitiesList() {
 
   const showActivityForm = () => {
     setActivityData({
-      id: null,
-      name: "",
-      description: "",
-      date: dateOfToday(),
-      image: null,
-      user_id:0,
-      assistants: [],
-      places: 0
+      activityId: null,
+      activityName: "",
+      activityDescription: "",
+      activityDate: dateOfToday(),
+      activityImage: null,
+      activityCoordinator:0,
+      activityAssistants: [],
+      activityPlaces: 0
   });
     setStatusForm('show');
   }
 
   const editActivity = (activity) => {
     setActivityData({
-      id: activity.id,
-      name: activity.name,
-      description: activity.description,
-      date: activity.date,
-      image: activity.image,
-      user_id:activity.coordinator.id,
-      assistants: activity.assistants,
-      places: activity.places
+      activityId: activity.id,
+      activityName: activity.name,
+      activityDescription: activity.description,
+      activityDate: activity.date,
+      activityImage: activity.image,
+      activityCoordinator:activity.coordinator.id,
+      activityAssistants: activity.assistants,
+      activityPlaces: activity.places
   });
     setStatusForm('show');
   }
@@ -100,7 +100,7 @@ function ActivitiesList() {
     <>
       <div className="activity-content">
       <div className="form-activity-container">
-        <FormActivity activityData={activityData} statusForm={statusForm} setStatusForm={setStatusForm} />
+        <FormActivity activityData={activityData} setActivityData={setActivityData} statusForm={statusForm} setStatusForm={setStatusForm} />
       </div>
       <div className="activities-container">
         {activities && showActivities()}

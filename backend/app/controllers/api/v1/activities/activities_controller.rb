@@ -1,19 +1,6 @@
 class Api::V1::Activities::ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show update destroy ]
 
-  # def add_employees
-  #   activity = Activity.find(params[:id])
-  #   employee_ids = params[:employee_ids]
-
-  #   new_employees = Employee.where(id: employee_ids).where.not(id: activity.user_id).where.not(id: activity.employee_ids)
-
-  #   if new_employees.any? && activity.employees.concat(new_employees)
-  #     render json: { message: "Empleados agregados a la actividad con éxito" }
-  #   else
-  #     render json: { message: "Algo falla" }
-  #   end
-  # end
-
   def add_employees(activity)
     employee_ids = params[:employee_ids]
 
@@ -51,6 +38,8 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
   # POST /activities
   def create
     @activity = Activity.new(activity_params)
+    puts "///////////////////////////////////////////"
+    puts @activity
 
     if @activity.save
       render json: @activity, status: :created

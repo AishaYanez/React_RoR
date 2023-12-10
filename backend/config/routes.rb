@@ -13,7 +13,6 @@ Rails.application.routes.draw do
       end
       namespace :activities, path: "" do
         resources :activities do
-          post "add_employees", on: :member
           post "add_clients", on: :member
         end
       end
