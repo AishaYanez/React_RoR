@@ -23,11 +23,13 @@ function App() {
   const userContext = useContext(AuthContext);
 
   useEffect(() => {
-    AuthService.checkAuth().then(res => {
-      userContext[1](res);
-    }).catch(
-      err => console.error(err)
-    );
+    if (localStorage.getItem('token') !== null) {
+      AuthService.checkAuth().then(res => {
+        userContext[1](res);
+      }).catch(
+        err => console.error(err)
+      );
+    }
   }, []);
 
   return (

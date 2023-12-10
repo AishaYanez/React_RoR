@@ -9,35 +9,58 @@ import FormActivity from "../../components/FormActivity/FormActivity";
 
 
 function ActivitiesList() {
+  const [activityData, setActivityData] = useState({
+  });
   const [activities, setActivities] = useState([]);
-  const [statusForm, setStatusForm] = useState('hidden');
+  const [statusForm, setStatusForm] = useState('');
   const userContext = useContext(AuthContext);
 
-  useEffect(() => {
-    async function fetchActivities() {
-      try {
-        const fetchedActivities = (await ActivityService.getActivities()).data;
-        setActivities(fetchedActivities);
-      } catch (e) {
-        console.error(e);
-      }
+  async function fetchActivities() {
+    try {
+      const fetchedActivities = (await ActivityService.getActivities()).data;
+      setActivities(fetchedActivities);
+    } catch (e) {
+      console.error(e);
     }
+  }
 
+  useEffect(() => {    
     fetchActivities();
   }, []);
 
   const showSearchBar = () => {
     console.log('seacheBar');
   }
+
   const showActivityForm = () => {
+    setActivityData({
+      name: "",
+      description: "",
+      date: null,
+      image: null,
+      user_id:null,
+      assistants: [],
+      places: null
+  });
     setStatusForm('show');
   }
-  
-  // const editActivity = () => {
-  //   setStatusForm('show');
-  //   showActivityForm();
 
-  // }
+  const editActivity = (activity) => {
+    setActivityData({
+      name: activity.name,
+      description: activity.description,
+      date: activity.date,
+      image: activity.image,
+      user_id:activity.coordinator.id,
+      assistants: activity.assistants,
+      places: activity.places
+  });
+    setStatusForm('show');
+  }
+
+  const deleteActivity = (id) => {
+    ActivityService.deleteActivity(id).then(res => fetchActivities()).catch(err => console.error(err))
+  }
 
   const showActivities = () => {
     return (
@@ -52,7 +75,8 @@ function ActivitiesList() {
             <div className="activity-btns">
               {userContext[0] !== 'admin'
                 ? <p className="see-more">Ver +</p>
-                : <><DeleteOutlined className="activity-icon" /><EditOutlined onClick={showActivityForm} className="activity-icon" /></>}
+                : <><DeleteOutlined onClick={() => deleteActivity(a.id)} className="activity-icon" />
+                <EditOutlined onClick={() => editActivity(a)} className="activity-icon" /></>}
             </div>
           </div>
         ))}
@@ -62,8 +86,9 @@ function ActivitiesList() {
 
   return (
     <>
+      <div className="activity-content">
       <div className="form-activity-container">
-        <FormActivity statusForm={statusForm} setStatusForm={setStatusForm} />
+        <FormActivity activityData={activityData} statusForm={statusForm} setStatusForm={setStatusForm} />
       </div>
       <div className="activities-container">
         {activities && showActivities()}
@@ -75,6 +100,7 @@ function ActivitiesList() {
             <AppstoreAddOutlined onClick={showActivityForm} className="icon-float" />
           </div>}
         </div>
+      </div>
       </div>
     </>
   );

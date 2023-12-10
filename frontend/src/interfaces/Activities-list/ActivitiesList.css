@@ -68,7 +68,7 @@
 }
 
 .icons-container {
-  position: absolute;
+  position: fixed;
   flex-direction: column;
   right: 2%;
   top: 40%;

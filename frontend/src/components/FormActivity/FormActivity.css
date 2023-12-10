@@ -3,12 +3,27 @@
   background-color: #232528;
   width: 90%;
   max-width: 400px;
-  margin: 10px 20px 10px 0px;
-  z-index: 1;
-  border-radius: 0 10px 10px 0;
   left: -450px;
+  z-index: 100;
+  margin: 10px 20px 10px 0px;
+  border-radius: 0 10px 10px 0;
   transition: left 0.7s ease;
   padding: 20px 0px;
+  overflow-y: auto;
+  
+}
+@media (max-height: 400px) {
+  .activity-form {
+    max-height: 75vh;
+    top: 0;
+  }
+}
+
+@media (min-height: 400px) and (max-height: 540px) {
+  .activity-form {
+    top: 0;
+    max-height: 75vh;
+  }
 }
 
 .show {
@@ -19,7 +34,7 @@ h3 {
   color: #EAEFFF;
 }
 
-.activity-form > input {
+.activity-form > input, select{
   width: 75%;
   margin: 10px;
   border: none;
