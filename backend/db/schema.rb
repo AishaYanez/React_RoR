@@ -102,7 +102,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_05_155044) do
     t.string "jti", null: false
     t.date "birthdate"
     t.integer "cardnumber"
-    t.boolean "admin", default: false
+    t.boolean "admin"
     t.string "profession"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti", unique: true

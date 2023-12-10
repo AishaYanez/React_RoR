@@ -32,21 +32,33 @@ function ActivitiesList() {
     console.log('seacheBar');
   }
 
+  const dateOfToday = () => {
+    const today = new Date();
+
+    const formattedToday = `${today.getFullYear()}-${
+      (today.getMonth() + 1).toString().padStart(2, '0')
+    }-${today.getDate().toString().padStart(2, '0')}`;
+
+    return formattedToday;
+  }
+
   const showActivityForm = () => {
     setActivityData({
+      id: null,
       name: "",
       description: "",
-      date: null,
+      date: dateOfToday(),
       image: null,
-      user_id:null,
+      user_id:0,
       assistants: [],
-      places: null
+      places: 0
   });
     setStatusForm('show');
   }
 
   const editActivity = (activity) => {
     setActivityData({
+      id: activity.id,
       name: activity.name,
       description: activity.description,
       date: activity.date,
