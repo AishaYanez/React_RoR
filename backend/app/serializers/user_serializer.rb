@@ -6,9 +6,9 @@ class UserSerializer < ActiveModel::Serializer
     SettingSerializer.new(user.object.setting).as_json
   end
 
-  # attribute :created_date do |user|
-  #   user.object.created_at && user.object.created_at.strftime("%m/%d/%Y")
-  # end
+  attribute :created_date do |user|
+    user.object.created_at && user.object.created_at.strftime("%m/%d/%Y")
+  end
 
   def image
     if object.image.attached?
