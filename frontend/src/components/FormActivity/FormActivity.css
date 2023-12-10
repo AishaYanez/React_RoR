@@ -10,7 +10,7 @@
   transition: left 0.7s ease;
   padding: 20px 0px;
   overflow-y: auto;
-  
+  text-align: start;
 }
 @media (max-height: 400px) {
   .activity-form {
@@ -31,18 +31,28 @@
 }
 
 h3 {
-  color: #EAEFFF;
+  color: #EAF6FF;
+  text-align: center;
 }
 
-.activity-form > input, select{
-  width: 60%;
-  margin: 10px;
+.btns {
+  order: 5;
+}
+
+.activity-form > input, select, label{
+  width: 70%;
+  margin: 6px 25px;
   border: none;
   font-size: 16px;
   padding: 2px 0px 1px 4px;
+  order: 5;
 }
 
 .activity-form>input:focus {
   outline: none;
   transform: scale(1.05);
+}
+
+.activity-label {
+  color: #EAF6FF;
 }

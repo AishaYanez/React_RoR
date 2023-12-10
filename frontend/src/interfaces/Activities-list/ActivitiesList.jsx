@@ -14,6 +14,7 @@ function ActivitiesList() {
   const [activities, setActivities] = useState([]);
   const [statusForm, setStatusForm] = useState('');
   const userContext = useContext(AuthContext);
+  const propsActivity = {activityData, setActivityData, statusForm, setStatusForm, fetchActivities}
 
   async function fetchActivities() {
     try {
@@ -67,6 +68,8 @@ function ActivitiesList() {
       activityAssistants: activity.assistants,
       activityPlaces: activity.places
   });
+
+  console.log(activity.image);
     setStatusForm('show');
   }
 
@@ -100,7 +103,7 @@ function ActivitiesList() {
     <>
       <div className="activity-content">
       <div className="form-activity-container">
-        <FormActivity activityData={activityData} setActivityData={setActivityData} statusForm={statusForm} setStatusForm={setStatusForm} />
+        <FormActivity {...propsActivity} />
       </div>
       <div className="activities-container">
         {activities && showActivities()}
