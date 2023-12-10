@@ -1,17 +1,25 @@
 class Api::V1::Activities::ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show update destroy ]
 
-  def add_employees
-    activity = Activity.find(params[:id])
+  # def add_employees
+  #   activity = Activity.find(params[:id])
+  #   employee_ids = params[:employee_ids]
+
+  #   new_employees = Employee.where(id: employee_ids).where.not(id: activity.user_id).where.not(id: activity.employee_ids)
+
+  #   if new_employees.any? && activity.employees.concat(new_employees)
+  #     render json: { message: "Empleados agregados a la actividad con éxito" }
+  #   else
+  #     render json: { message: "Algo falla" }
+  #   end
+  # end
+
+  def add_employees(activity)
     employee_ids = params[:employee_ids]
 
     new_employees = Employee.where(id: employee_ids).where.not(id: activity.user_id).where.not(id: activity.employee_ids)
 
-    if new_employees.any? && activity.employees.concat(new_employees)
-      render json: { message: "Empleados agregados a la actividad con éxito" }
-    else
-      render json: { message: "Algo falla" }
-    end
+    activity.employees.replace(new_employees)
   end
 
   def add_clients
@@ -21,8 +29,9 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
     new_clients = Client.where(id: client_ids).where.not(id: activity.user_id)
 
     if new_clients.any? && activity.clients.concat(new_clients)
-      render json: { message: "Clientes agregados a la actividad con éxito" }
+      render json: @activity
     else
+      render json: @activity
       render json: { message: "Algo falla" }
     end
   end
@@ -45,6 +54,7 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
 
     if @activity.save
       render json: @activity, status: :created
+      add_employees(@activity)
     else
       render json: @activity.errors, status: :unprocessable_entity
     end
@@ -53,7 +63,8 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
   # PATCH/PUT /activities/1
   def update
     if @activity.update(activity_params)
-      render json: @activity
+      add_employees(@activity)
+      render json: @activity, status: :ok
     else
       render json: @activity.errors, status: :unprocessable_entity
     end
