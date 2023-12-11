@@ -11,7 +11,6 @@ export function AuthProvider({ children }) {
   const [userData, setUserData] = useState();
 
   const loginContext = (user) => {
-    console.log(user);
     if (!user.email.includes('@stillhigher.es')) {
       setUserStatus('client');
     } else {

@@ -1,15 +1,16 @@
 import { useState, useContext } from "react";
 import { useNavigate } from 'react-router-dom';
-import {AuthContext} from '../../context/AuthContext/AuthContext'
+import { AuthContext } from '../../context/AuthContext/AuthContext'
 
 import Popup from '../../components/PopUp/Popup'
 import './Profile.css';
 import AuthService from "../../services/Auth/auth.service";
+import UserService from "../../services/User/user.service";
 
 function Profile() {
-  
+
   const nav = useNavigate();
-  
+
   const [data, setData] = useState({});
   const [popup, setPopup] = useState(false);
   const userContext = useContext(AuthContext);
@@ -36,9 +37,12 @@ function Profile() {
       ],
       button: {
         method: (val) => {
-          console.log('change');
-          console.log(val[0]);
-          console.log(val[1]);
+          let credentials = btoa(`${val[0]}:${val[1]}`);
+          UserService.updateUser(userData.id, credentials).then(res => {
+            nav('/auth');
+            closePopup()
+          }
+          ).catch(err => console.error(err))
         },
         value: 'Cambiar'
       }
@@ -63,12 +67,12 @@ function Profile() {
       ],
       button: {
         method: (val) => {
-          console.log('delete');
-          console.log(val[0]);
-          AuthService.deleteAccount().then(
-            nav('/auth')
-            ).catch(err => console.error(err))
-          closePopup()
+          AuthService.deleteAccount().then(res => {
+            nav('/auth');
+            localStorage.removeItem('token');
+            closePopup()
+          }
+          ).catch(err => console.error(err))
         },
         value: 'Borrar'
       }

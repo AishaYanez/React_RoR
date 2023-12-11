@@ -1,11 +1,11 @@
 class Api::V1::Users::UsersController < ApplicationController
-  before_action :auth_basic_auth, only: [:update]
+  before_action :auth_basic_auth, only: [:update_password]
 
   def auth_basic_auth
     set_user
     credentials = ActionController::HttpAuthentication::Basic.decode_credentials(request)
     oldPassword, newPassword = credentials.split(":")
-    update(oldPassword, newPassword)
+    update_password(oldPassword, newPassword)
   end
 
   def index
@@ -13,12 +13,11 @@ class Api::V1::Users::UsersController < ApplicationController
     render json: @users
   end
 
-  def update(oldPassword, newPassword)
+  def update_password(oldPassword, newPassword)
     if @user.valid_password?(oldPassword)
       if @user.update(password: newPassword)
         render json: {
                  status: { code: 200, message: "Contraseña cambiada correctamente" },
-                 data: @user.as_json,
                }, status: :ok
       else
         render json: { error: "Algo a fallado" }, status: :unprocessable_entity

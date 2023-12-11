@@ -5,6 +5,15 @@ const getEmployees = () => {
   return http.get('/employees');
 };
 
+const updateUser = (id, credentials) => {
+  return http.put(`/users/${id}/update_password`, null, {
+    headers: {
+      ...http.defaults.headers.common,
+      Authorization: `Basic ${credentials}`
+    }
+  });
+};
+
 // const getUsers = () => {
 //   return http.get('/users');
 // };
@@ -22,9 +31,6 @@ const getEmployees = () => {
 //   return http.delete(`/users/user?email=${email}`);
 // };
 
-const updateUser = (email, data) => {
-  return http.put(`/users/user?email=${email}`, data);
-};
 
 const UserService = {
   getEmployees,
