@@ -39,7 +39,7 @@ const loginUser = (credentials) => {
     setToken(res.data.token)
     return res.data;
   }).catch(error => {
-    return error
+    throw error
   });
 };
 

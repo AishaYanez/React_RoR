@@ -11,6 +11,7 @@
   padding: 20px 0px;
   overflow-y: auto;
   text-align: start;
+  top: 65px;
 }
 @media (max-height: 400px) {
   .activity-form {
