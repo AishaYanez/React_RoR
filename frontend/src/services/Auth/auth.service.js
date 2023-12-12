@@ -2,7 +2,7 @@ import http from '../http-common';
 
 const getToken = () => {
   const now = new Date(Date.now()).getTime();
-  const thirtyMinutes = 1000 * 60 * 90;
+  const thirtyMinutes = 1000 * 60 * 1440;
   const timeSinceLastLogin = now - localStorage.getItem("lastLoginTime");
   if (timeSinceLastLogin < thirtyMinutes) {
     return localStorage.getItem("token");
@@ -19,12 +19,14 @@ const setToken = (token) => {
 };
 
 const checkAuth = () => {
-  return http.post('/users/current_user', {
+  return http.get('/current_user', {
     headers: {
       ...http.defaults.headers.common,
-      Authorization: getToken()
+      Authorization: `Bearer ${getToken()}`
     }
-  });
+  }).then(res => {
+    return res.data;
+  })
 };
 
 const loginUser = (credentials) => {
@@ -36,6 +38,8 @@ const loginUser = (credentials) => {
   }).then(res => {
     setToken(res.data.token)
     return res.data;
+  }).catch(error => {
+    throw error
   });
 };
 

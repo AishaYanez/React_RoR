@@ -21,7 +21,6 @@ function Nav() {
     if (localStorage.getItem('token') != null) {
       AuthService.logoutUser()
       .then(r => {
-          console.log(r);
           logoutActions();
         })
         .catch(e => console.error(e))

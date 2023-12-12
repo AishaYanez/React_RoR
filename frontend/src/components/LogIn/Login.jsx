@@ -61,7 +61,7 @@ function Login() {
   return (
     <>
       <h2>Log In</h2>
-      <form >
+      <form className='user-form'>
         <span>{voidLoginError}</span>
         <input placeholder='Email' id="email" onChange={changeData} type="email" value={user.email} />
         <input placeholder='Contraseña' id="password" onChange={changeData} type="password" value={user.password} />

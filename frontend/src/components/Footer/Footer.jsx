@@ -18,16 +18,16 @@ function Footer() {
 
 
   return (
-    <footer>
-      <div className="logo-footer-container">
+    <footer className="logo-footer-container">
+      {/* <div className="logo-footer-container"> */}
         {imageLoaded ? (
           <img
             src="/Logo/Logo-light-name-noBG.svg"
             alt="Logo de la empresa, hombre/estrella de color rojo cayendo envuelto en una linea negra. Por debajo de la linea negra, escrito con una ligera curva esta el nombre de la marca"
           />
         ) : null}
-      </div>
-      <div className="socialmedia-icons-container">
+      {/* </div> */}
+      {/* <div className="socialmedia-icons-container">
         <ul>
           <li className="socialmedia-icons"></li>
           <li className="socialmedia-icons"></li>
@@ -37,7 +37,7 @@ function Footer() {
       </div>
       <div className="politics-container">
 
-      </div>
+      </div> */}
     </footer>
   );
 }

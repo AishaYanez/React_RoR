@@ -4,6 +4,7 @@ header {
   background-color: #EAF6FF;
   border-bottom: 2px solid #232528;
   height: auto;
+  z-index: 100;
 }
 
 .main-header {

@@ -38,7 +38,7 @@ class Api::V1::Users::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :discriminator, :image)
+    params.require(:user).permit(:nickname, :discriminator, :img, :admin)
   end
 end
 
