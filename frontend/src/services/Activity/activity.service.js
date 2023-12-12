@@ -14,7 +14,7 @@ const createActivity = (data) => {
 };
 
 const updateActivity = (id, data) => {
-  return http.put(`/activities${id}`, data);
+  return http.put(`/activities/${id}`, data);
 };
 
 const deleteActivity = (id) => {

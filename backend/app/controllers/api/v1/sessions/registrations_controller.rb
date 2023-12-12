@@ -20,13 +20,14 @@ class Api::V1::Sessions::RegistrationsController < Devise::RegistrationsControll
   end
 
   def create_user(email, password)
+    puts user_params
     @user = User.new(email: email, password: password, **user_params)
 
     if @user.save
       sign_in(@user)
       render json: {
         status: { code: 200, message: "Signed up successfully." },
-        data: UserSerializer.new(@user).serializable_hash[:data][:attributes],
+        data: UserSerializer.new(@user).serializable_hash,
       }, status: :ok
     else
       render json: {

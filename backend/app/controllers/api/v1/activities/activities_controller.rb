@@ -1,15 +1,27 @@
 class Api::V1::Activities::ActivitiesController < ApplicationController
   before_action :set_activity, only: %i[ show update destroy ]
 
-  def add_users
+  def add_employees(activity)
+    employee_ids = params[:employee_ids]
+    if employee_ids.present?
+      employee_ids_array = employee_ids.map(&:to_i)
+      new_employees = Employee.where(id: employee_ids).where.not(id: activity.user_id).where.not(id: activity.employee_ids)
+
+      activity.employees.replace(new_employees)
+    end
+  end
+
+  def add_clients
     activity = Activity.find(params[:id])
-    user_ids = params[:user_ids]
+    client_ids = params[:client_id]
 
-    new_users = Employee.where(id: user_ids).where.not(id: activity.user_ids)
+    new_clients = Client.where(id: client_ids).where.not(id: activity.user_id)
 
-    activity.users << new_users.where.not(id: activity.user_id)
-
-    render json: { message: "Empleados agregados a la actividad con éxito" }
+    if new_clients.any? && activity.clients.concat(new_clients)
+      render json: @activity
+    else
+      render json: { message: "Algo falla" }, status: :unprocessable_entity
+    end
   end
 
   # GET /activities
@@ -27,9 +39,12 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
   # POST /activities
   def create
     @activity = Activity.new(activity_params)
+    puts "///////////////////////////////////////////"
+    puts @activity.employee_ids
 
     if @activity.save
       render json: @activity, status: :created
+      # add_employees(@activity)
     else
       render json: @activity.errors, status: :unprocessable_entity
     end
@@ -38,7 +53,8 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
   # PATCH/PUT /activities/1
   def update
     if @activity.update(activity_params)
-      render json: @activity
+      add_employees(@activity)
+      render json: @activity, status: :ok
     else
       render json: @activity.errors, status: :unprocessable_entity
     end
@@ -58,6 +74,6 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def activity_params
-    params.require(:activity).permit(:name, :description, :date, :places, :image, :user_id, :users_ids)
+    params.require(:activity).permit(:name, :description, :date, :places, :image, :user_id, :employee_ids, :client_id)
   end
 end

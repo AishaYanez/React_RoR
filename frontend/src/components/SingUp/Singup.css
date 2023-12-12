@@ -3,14 +3,14 @@ h2 {
   margin-top: 50px;
 }
 
-form {
+.user-form {
   display: flex;
   flex-direction: column;
   width: 85vw;
   margin: 30px auto;
 }
 
-form>input {
+.user-form>input {
   margin: 10px;
   border: none;
   font-size: 16px;
@@ -18,7 +18,7 @@ form>input {
   border-bottom: 1px solid #E55454;
 }
 
-form>input:focus {
+.user-form>input:focus {
   outline: none;
   transform: scale(1.05);
 }
@@ -40,7 +40,7 @@ form>input:focus {
   font-size: 19px;
 }
 
-form>.btn-submit:focus {
+.user-form>.btn-submit:focus {
   transform: scale(1.00);
   background-color: #E55454;
   color: #EAF6FF;
