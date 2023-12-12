@@ -65,21 +65,28 @@ const editActivity = async () => {
   }).catch(error => console.error(error));
 }
 
+const addImage=(formData)=>{
+  if (activityData.activityImage != null) {
+    formData.append('activity[image]', activityData.activityImage);
+  }
+}
+
 const formattedActivity = () => {
   const formData = new FormData();
   formData.append('activity[name]', activityData.activityName);
   formData.append('activity[description]', activityData.activityDescription);
   formData.append('activity[date]', activityData.activityDate);
-  // formData.append('activity[image]', activityData.activityImage);
   formData.append('activity[user_id]', activityData.activityCoordinator);
-  formData.append('activity[employee_ids]', []);
+  formData.append('activity[employee_ids]', [1]);
   formData.append('activity[places]', activityData.activityPlaces);
+  
+  addImage(formData);
 
   return formData;
 };
 
 return (
-  <form className={`activity-form ${statusForm}`}>
+  <form className={`activity-form ${statusForm}`} encType="multipart/form-data">
     <h3>Actividad</h3>
     <label className='activity-label' htmlFor='activityName'>Nombre</label>
     <input onChange={e => handleInputChange(e)} value={activityData.activityName} id='activityName' name="activityName" type="text" />

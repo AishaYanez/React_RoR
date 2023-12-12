@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         resources :activities do
           post "add_clients", on: :member
         end
+        resources :locations
       end
     end
   end
