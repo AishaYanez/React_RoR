@@ -85,10 +85,17 @@ function Profile() {
     setPopup(false);
   }
 
+  const handleFileChange = () => {
+    
+  }
+
   return (
     <div className="profile">
+      <form>
+      <input onChange={handleFileChange} type="file" accept="image/*" multiple={false}/>
       <div className="settings-container">
       </div>
+      </form>
       <div className='account-data'>
         <p onClick={changePassword} className='data-change'>Cambiar contraseña</p>
         <p onClick={deleteAccount} className='data-change'>Borrar cuenta</p>
