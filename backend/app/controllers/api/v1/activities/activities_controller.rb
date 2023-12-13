@@ -3,10 +3,12 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
 
   def add_employees(activity)
     employee_ids = params[:employee_ids]
+    if employee_ids.present?
+      employee_ids_array = employee_ids.map(&:to_i)
+      new_employees = Employee.where(id: employee_ids).where.not(id: activity.user_id).where.not(id: activity.employee_ids)
 
-    new_employees = Employee.where(id: employee_ids).where.not(id: activity.user_id).where.not(id: activity.employee_ids)
-
-    activity.employees.replace(new_employees)
+      activity.employees.replace(new_employees)
+    end
   end
 
   def add_clients
@@ -38,11 +40,11 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
     puts "///////////////////////////////////////////"
-    puts @activity
+    puts @activity.employee_ids
 
     if @activity.save
       render json: @activity, status: :created
-      add_employees(@activity)
+      # add_employees(@activity)
     else
       render json: @activity.errors, status: :unprocessable_entity
     end
