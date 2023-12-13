@@ -1,4 +1,6 @@
 import { useEffect, useState, useContext } from "react";
+import { Link } from 'react-router-dom';
+
 import { SearchOutlined, DeleteOutlined, EditOutlined, AppstoreAddOutlined } from "@ant-design/icons";
 
 import ActivityService from '../../services/Activity/activity.service';
@@ -89,7 +91,7 @@ function ActivitiesList() {
             </div>
             <div className="activity-btns">
               {userContext[0] !== 'admin'
-                ? <p className="see-more">Ver +</p>
+                ? <Link to={`activity/${a.id}`} className="see-more">Ver +</Link>
                 : <><DeleteOutlined onClick={() => deleteActivity(a.id)} className="activity-icon" />
                 <EditOutlined onClick={() => editActivity(a)} className="activity-icon" /></>}
             </div>
