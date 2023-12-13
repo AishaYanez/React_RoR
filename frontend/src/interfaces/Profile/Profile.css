@@ -8,3 +8,16 @@
 .profile {
   position: relative;
 }
+
+.data-change{
+  color: #232528;
+  cursor: pointer;
+}
+
+.data-change.dark{
+  color: #abbeda;
+}
+
+body.dark {
+  background-color: #232528;
+}

@@ -1,6 +1,6 @@
 class UserSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :nickname, :email, :discriminator, :image, :admin
+  attributes :id, :nickname, :email, :discriminator, :image, :admin
 
   attribute :setting do |user|
     SettingSerializer.new(user.object.setting).as_json

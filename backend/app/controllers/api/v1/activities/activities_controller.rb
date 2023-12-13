@@ -15,12 +15,12 @@ class Api::V1::Activities::ActivitiesController < ApplicationController
     activity = Activity.find(params[:id])
     client_ids = params[:client_id]
 
-    new_clients = Client.where(id: client_ids).where.not(id: activity.user_id)
+    new_clients = Client.where(id: client_ids).where.not(id: activity.client_ids)
 
     if new_clients.any? && activity.clients.concat(new_clients)
-      render json: @activity
+      render json: { message: "Cliente añadido correctamente" }
     else
-      render json: { message: "Algo falla" }, status: :unprocessable_entity
+      render json: { message: "Ningún cliente agregado" }
     end
   end
 

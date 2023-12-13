@@ -38,10 +38,10 @@ function Nav() {
             <p>Perfil</p>
           </Link>
         </li>
-        <li className='contact-link'>
+        <li className='helper-link'>
           <Link className='link'>
             <div className='icon-container'></div>
-            <p>Contactar</p>
+            <p>Ayuda</p>
           </Link>
         </li>
         <li className='activities-link'>
