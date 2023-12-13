@@ -30,7 +30,6 @@ function FormActivity(props) {
       ...prevData,
       activityImage: file,
     }));
-    console.log(activityData);
   };
 
   const handleInputChange = (e) => {
