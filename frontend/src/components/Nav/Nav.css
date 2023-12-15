@@ -12,6 +12,11 @@ nav>ul>li {
   display: block;
 }
 
+.nav-icon{
+  max-width: 30px;
+  max-height: 30px;
+}
+
 ul>li>.link {
   text-decoration: none;
   display: inline-block;

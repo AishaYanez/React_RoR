@@ -1,21 +1,64 @@
+import { useParams } from "react-router-dom";
 import ActivityService from "../../services/Activity/activity.service";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthContext/AuthContext";
 
 function Activity() {
-  const  inscription = () => {
-    // ActivityService.addClient(idActivity, idUser).then(r => console.log(r))
+  const { id } = useParams();
+  const [activity, setActivity] = useState({});
+  const userContext = useContext(AuthContext);
+  const userData = userContext[3];
+
+  async function fetchActivity() {
+    try {
+      const fetchedActivity = (await ActivityService.getActivity(id)).data;
+      setActivity(fetchedActivity);
+    } catch (e) {
+      console.error(e);
+    }
   }
- return (
-  <div className="content-container">
-    <div className="images-container">
-      <div className="image-activity"></div>
-      <div className="image-coordinator"></div>
-    </div>
-    <div className="data-activity"></div>
-    <div>
-      <button onClick={inscription}>Inscribirse</button>
-    </div>
-  </div>
- ); 
+
+  useEffect(() => {
+    fetchActivity();
+  }, []);
+
+  const inscription = () => {
+    let formData = new FormData();
+
+    console.log(id);
+    console.log(userData.id);
+    formData.append('client_id', userData.id)
+    console.log(formData);
+    ActivityService.addClient(id, formData).then(r => console.log(r)).catch(err => console.error(err))
+  }
+
+   const showActivity = () => {
+    return (
+      <div className="content-container">
+        <div className="images-container">
+          <div className="image-activity">
+            <img src={activity.image ? activity.image.url : '/Imgs/default_place.png'} alt="Imagen descriptiva de la actividad" />
+          </div>
+          <div className="image-coordinator">
+
+          </div>
+        </div>
+        <div className="data-activity">
+          <p>{activity.name}</p>
+        </div>
+        <div>
+          {userData && <button onClick={inscription}>Inscribirse</button>}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      {activity && showActivity()}
+    </>
+  );
 }
+
 
 export default Activity;

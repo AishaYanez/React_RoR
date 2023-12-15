@@ -16,6 +16,9 @@ const createActivity = (data) => {
 const updateActivity = (id, data) => {
   return http.put(`/activities/${id}`, data);
 };
+const addClient = (idActivity, idClient) => {
+  return http.post(`/activities/${idActivity}/add_clients`, idClient);
+};
 
 const deleteActivity = (id) => {
   return http.delete(`/activities/${id}`);
@@ -26,8 +29,8 @@ const ActivityService = {
   getActivity,
   createActivity,
   updateActivity,
+  addClient,
   deleteActivity
 };
-
 
 export default ActivityService;

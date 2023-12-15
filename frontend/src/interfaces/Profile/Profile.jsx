@@ -135,20 +135,21 @@ function Profile() {
 
   return (
     <div className="profile">
-      <form>
+      <form className="form-user">
         <div className="img-container">
-        {/* <Form.Item label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
-          <Upload action="/upload.do" listType="picture-card">
-            <div>
-              <PlusOutlined />
-              <div style={{ marginTop: 8 }}>Upload</div>
-            </div>
-          </Upload>
-          
-        </Form.Item> */}
+          <Form.Item valuePropName="fileList" >
+            <Upload accept="image/*" multiple={false} action="/upload.do" listType="picture-card">
+              <div className="img-profile-container">
+                <PlusOutlined />
+                  <img className="image-profile" src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
+              </div>
+            </Upload>
+          </Form.Item>
+        </div>
+        {/* <div className="img-container">
           <img src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
           <input onChange={handleFileChange} type="file" accept="image/*" multiple={false} />
-        </div>
+        </div> */}
         <div className="settings-container">
           <br />
           <Form.Item label="Modo luminoso:" valuePropName="checked">

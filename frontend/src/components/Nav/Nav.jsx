@@ -34,25 +34,31 @@ function Nav() {
       <ul>
         <li className='profile-link'>
           <Link to='/profile' className='link'>
-            <div className='icon-container'></div>
+            <div className='nav-icon'></div>
             <p>Perfil</p>
           </Link>
         </li>
         <li className='helper-link'>
           <a href="/Help/Manual de ayuda.html" className='link'>
-            <div className='icon-container'></div>
+            <div className='nav-icon'>
+              
+            </div>
             <p>Ayuda</p>
           </a>
         </li>
         <li className='activities-link'>
           <Link to="/activities" className='link'>
-            <div className='icon-container'></div>
+            <div className='nav-icon'>
+
+            </div>
             <p>Actividades</p>
           </Link>
         </li>
         <li onClick={logOut}>
           <div className='link'>
-            <div className='icon-container'></div>
+            <div className='nav-icon'>
+
+            </div>
             <p>Log Out</p>
           </div>
         </li>
