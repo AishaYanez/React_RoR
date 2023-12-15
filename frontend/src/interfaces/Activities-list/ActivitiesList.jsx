@@ -7,6 +7,7 @@ import { AuthContext } from '../../context/AuthContext/AuthContext';
 
 import './ActivitiesList.css';
 import FormActivity from "../../components/FormActivity/FormActivity";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 
 function ActivitiesList() {
@@ -14,6 +15,7 @@ function ActivitiesList() {
   });
   const [activities, setActivities] = useState([]);
   const [statusForm, setStatusForm] = useState('');
+  const [statusSearch, setStatusSearch] = useState('close');
   const userContext = useContext(AuthContext);
   const propsActivity = {activityData, setActivityData, statusForm, setStatusForm, fetchActivities}
 
@@ -31,7 +33,11 @@ function ActivitiesList() {
   }, []);
 
   const showSearchBar = () => {
-    console.log('seacheBar');
+    setStatusSearch('show');
+  }
+  const closeSearchBar = () => {
+    fetchActivities();
+    setStatusSearch('close');
   }
 
   const dateOfToday = () => {
@@ -40,7 +46,6 @@ function ActivitiesList() {
     const formattedToday = `${today.getFullYear()}-${
       (today.getMonth() + 1).toString().padStart(2, '0')
     }-${today.getDate().toString().padStart(2, '0')}`;
-
     return formattedToday;
   }
 
@@ -70,7 +75,6 @@ function ActivitiesList() {
       activityPlaces: activity.places
   });
 
-  console.log(activity.image);
     setStatusForm('show');
   }
 
@@ -102,6 +106,7 @@ function ActivitiesList() {
 
   return (
     <>
+      <SearchBar statusSearch={statusSearch} activities={activities} setActivities={setActivities} closeSearchBar={closeSearchBar}/>
       <div className="activity-content">
       <div className="form-activity-container">
         <FormActivity {...propsActivity} />

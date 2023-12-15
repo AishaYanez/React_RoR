@@ -54,16 +54,18 @@ const addActivity = () => {
 const editActivity = async () => {
   const activity = formattedActivity();
   let id = activityData.activityId
-
+  console.log(id);
+  console.log(activity);
   ActivityService.updateActivity(id, activity).then(res => {
-    console.log(res);
     fetchActivities();
     setStatusForm('');
+    console.log(res);
   }).catch(error => console.error(error));
 }
 
 const addImage=(formData)=>{
-  if (activityData.activityImage != null) {
+  console.log(activityData.activityImage);
+  if (activityData.activityImage != null && !activityData.activityImage.url) {
     formData.append('activity[image]', activityData.activityImage);
   }
 }

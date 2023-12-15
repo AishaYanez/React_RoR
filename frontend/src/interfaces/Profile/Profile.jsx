@@ -22,7 +22,7 @@ function Profile() {
   const [popup, setPopup] = useState(false);
   const userContext = useContext(AuthContext);
   const userData = userContext[3];
-  const setUserData = userContext[3];
+  // const setUserData = userContext[4];
   const [settings, setSettings] = useState(userData.setting);
 
 
@@ -97,12 +97,11 @@ function Profile() {
 
   const closePopup = () => {
     setPopup(false);
-    console.log(settings);
   };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setUserData()
+    // setUserData()
     handleUpdateImage(file);
   };
 
@@ -146,10 +145,10 @@ function Profile() {
             </Upload>
           </Form.Item>
         </div>
-        {/* <div className="img-container">
+        <div className="img-container">
           <img src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
           <input onChange={handleFileChange} type="file" accept="image/*" multiple={false} />
-        </div> */}
+        </div>
         <div className="settings-container">
           <br />
           <Form.Item label="Modo luminoso:" valuePropName="checked">
