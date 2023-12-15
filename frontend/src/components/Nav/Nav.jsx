@@ -38,11 +38,11 @@ function Nav() {
             <p>Perfil</p>
           </Link>
         </li>
-        <li className='contact-link'>
-          <Link className='link'>
+        <li className='helper-link'>
+          <a href="/Help/Manual de ayuda.html" className='link'>
             <div className='icon-container'></div>
-            <p>Contactar</p>
-          </Link>
+            <p>Ayuda</p>
+          </a>
         </li>
         <li className='activities-link'>
           <Link to="/activities" className='link'>

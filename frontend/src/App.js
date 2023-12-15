@@ -18,6 +18,7 @@ import {
 
 import { AuthProvider, AuthContext } from './context/AuthContext/AuthContext';
 import AuthService from './services/Auth/auth.service';
+import Activity from './interfaces/Activity/Activity';
 
 function App() {
   const userContext = useContext(AuthContext);
@@ -44,6 +45,7 @@ function App() {
             element={userContext[0] !== 'visit' ? <Profile /> : <Navigate to="/" />}
           />
           <Route path="/activities" element={<ActList />} />
+          <Route path='/activity/:id' element={<Activity/>}/>
         </Routes>
       </BrowserRouter>
       <Footer />

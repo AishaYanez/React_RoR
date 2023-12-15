@@ -1,12 +1,34 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext/AuthContext'
+
+import { PlusOutlined } from '@ant-design/icons';
+import {
+  Form,
+  Switch,
+  Upload,
+} from 'antd';
 
 import Popup from '../../components/PopUp/Popup'
 import './Profile.css';
+import AuthService from "../../services/Auth/auth.service";
+import UserService from "../../services/User/user.service";
 
-function Profile(user) {
+function Profile() {
+
+  const nav = useNavigate();
+
   const [data, setData] = useState({});
   const [popup, setPopup] = useState(false);
+  const userContext = useContext(AuthContext);
+  const userData = userContext[3];
+  const setUserData = userContext[3];
+  const [settings, setSettings] = useState(userData.setting);
 
+
+  useEffect(() => {
+    handleUpdateSettings();
+  }, [settings]);
 
   //Create PopUp for change password
   const changePassword = () => {
@@ -29,9 +51,12 @@ function Profile(user) {
       ],
       button: {
         method: (val) => {
-          console.log('change');
-          console.log(val[0]);
-          console.log(val[1]);
+          let credentials = btoa(`${val[0]}:${val[1]}`);
+          UserService.updateUserPassword(userData.id, credentials).then(res => {
+            nav('/auth');
+            closePopup()
+          }
+          ).catch(err => console.error(err))
         },
         value: 'Cambiar'
       }
@@ -56,8 +81,12 @@ function Profile(user) {
       ],
       button: {
         method: (val) => {
-          console.log('delete');
-          console.log(val[0]);
+          AuthService.deleteAccount().then(res => {
+            nav('/auth');
+            localStorage.removeItem('token');
+            closePopup()
+          }
+          ).catch(err => console.error(err))
         },
         value: 'Borrar'
       }
@@ -68,15 +97,72 @@ function Profile(user) {
 
   const closePopup = () => {
     setPopup(false);
+    console.log(settings);
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setUserData()
+    handleUpdateImage(file);
+  };
+
+  const handleUpdateImage = (image) => {
+    const formData = new FormData();
+    formData.append('user[image]', image);
+    UserService.updateUserImage(userData.id, formData).then(r => console.log(r)).catch(err => console.error(err));
+  }
+
+  const handleInputSettings = (name, value) => {
+    setSettings((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleUpdateSettings = () => {
+    UserService.updateSettings(settings.id, settingsFormData())
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
+  };
+
+  const settingsFormData = () => {
+    const formData = new FormData();
+
+    formData.append('setting[font_size]', settings.font_size)
+    formData.append('setting[light_mode]', settings.light_mode)
+    return formData;
   }
 
   return (
     <div className="profile">
-      <div className="settings-container">
-      </div>
+      <form>
+        <div className="img-container">
+        {/* <Form.Item label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
+          <Upload action="/upload.do" listType="picture-card">
+            <div>
+              <PlusOutlined />
+              <div style={{ marginTop: 8 }}>Upload</div>
+            </div>
+          </Upload>
+          
+        </Form.Item> */}
+          <img src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
+          <input onChange={handleFileChange} type="file" accept="image/*" multiple={false} />
+        </div>
+        <div className="settings-container">
+          <br />
+          <Form.Item label="Modo luminoso:" valuePropName="checked">
+            <Switch onChange={(checked) => handleInputSettings('light_mode', checked)} checked={settings.light_mode} type="checkbox" name="light_mode" id="lightMode" />
+          </Form.Item>
+          <label htmlFor="normalFontSize">Normal:</label>
+          <input checked={settings.font_size === 'normal'} onChange={() => handleInputSettings('font_size', 'normal')} type="radio" name="font_size" id="normalFontSize" value="normal" />
+          <label htmlFor="BigFontSize">Grande:</label>
+          <input checked={settings.font_size === 'big'} onChange={() => handleInputSettings('font_size', 'big')} type="radio" name="font_size" id="BigFontSize" value="big" />
+        </div>
+      </form>
       <div className='account-data'>
-        <p onClick={changePassword} className='danger'>Cambiar contraseña</p>
-        <p onClick={deleteAccount} className='danger'>Borrar cuenta</p>
+        <p onClick={changePassword} className='data-change'>Cambiar contraseña</p>
+        <p onClick={deleteAccount} className='data-change'>Borrar cuenta</p>
       </div>
       <div className="popup-container">
         {popup && <Popup data={data} closePopup={closePopup} />}
