@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { Link } from 'react-router-dom';
 import { SearchOutlined, DeleteOutlined, EditOutlined, AppstoreAddOutlined } from "@ant-design/icons";
 
 import ActivityService from '../../services/Activity/activity.service';
@@ -6,6 +7,7 @@ import { AuthContext } from '../../context/AuthContext/AuthContext';
 
 import './ActivitiesList.css';
 import FormActivity from "../../components/FormActivity/FormActivity";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 
 function ActivitiesList() {
@@ -13,6 +15,7 @@ function ActivitiesList() {
   });
   const [activities, setActivities] = useState([]);
   const [statusForm, setStatusForm] = useState('');
+  const [statusSearch, setStatusSearch] = useState('close');
   const userContext = useContext(AuthContext);
   const propsActivity = {activityData, setActivityData, statusForm, setStatusForm, fetchActivities}
 
@@ -25,12 +28,16 @@ function ActivitiesList() {
     }
   }
 
-  useEffect(() => {    
+  useEffect(() => {
     fetchActivities();
   }, []);
 
   const showSearchBar = () => {
-    console.log('seacheBar');
+    setStatusSearch('show');
+  }
+  const closeSearchBar = () => {
+    fetchActivities();
+    setStatusSearch('close');
   }
 
   const dateOfToday = () => {
@@ -39,7 +46,6 @@ function ActivitiesList() {
     const formattedToday = `${today.getFullYear()}-${
       (today.getMonth() + 1).toString().padStart(2, '0')
     }-${today.getDate().toString().padStart(2, '0')}`;
-
     return formattedToday;
   }
 
@@ -69,7 +75,6 @@ function ActivitiesList() {
       activityPlaces: activity.places
   });
 
-  console.log(activity.image);
     setStatusForm('show');
   }
 
@@ -77,7 +82,7 @@ function ActivitiesList() {
     ActivityService.deleteActivity(id).then(res => fetchActivities()).catch(err => console.error(err))
   }
 
-  const showActivities = () => {
+   const showActivities = () => {
     return (
       <>
         {activities.map((a) => (
@@ -89,7 +94,7 @@ function ActivitiesList() {
             </div>
             <div className="activity-btns">
               {userContext[0] !== 'admin'
-                ? <p className="see-more">Ver +</p>
+                ? <Link to={`activity/${a.id}`} className="see-more">Ver +</Link>
                 : <><DeleteOutlined onClick={() => deleteActivity(a.id)} className="activity-icon" />
                 <EditOutlined onClick={() => editActivity(a)} className="activity-icon" /></>}
             </div>
@@ -101,6 +106,7 @@ function ActivitiesList() {
 
   return (
     <>
+      <SearchBar statusSearch={statusSearch} activities={activities} setActivities={setActivities} closeSearchBar={closeSearchBar}/>
       <div className="activity-content">
       <div className="form-activity-container">
         <FormActivity {...propsActivity} />

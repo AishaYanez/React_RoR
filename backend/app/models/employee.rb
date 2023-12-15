@@ -9,7 +9,6 @@ class Employee < User
     self.admin = Employee.count.zero? if admin.nil?
 
     puts self.admin
-    # Si admin es nil después de la verificación, establecerlo en true
     puts "--------------------------------------"
     self.admin = true if admin.nil?
     puts self.admin
