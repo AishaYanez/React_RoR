@@ -39,10 +39,10 @@ function Nav() {
           </Link>
         </li>
         <li className='helper-link'>
-          <Link className='link'>
+          <a href="/Help/Manual de ayuda.html" className='link'>
             <div className='icon-container'></div>
             <p>Ayuda</p>
-          </Link>
+          </a>
         </li>
         <li className='activities-link'>
           <Link to="/activities" className='link'>

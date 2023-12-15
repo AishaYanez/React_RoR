@@ -1,5 +1,14 @@
 class Api::V1::Users::UsersController < ApplicationController
   before_action :auth_basic_auth, only: [:update_password]
+  before_action :set_user, only: [:update_image]
+
+  def update_image
+    if @user.update(user_image)
+      render json: @user, status: :ok
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
 
   def auth_basic_auth
     set_user
@@ -37,7 +46,11 @@ class Api::V1::Users::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nickname, :discriminator, :img, :admin)
+    params.require(:user).permit(:nickname, :discriminator, :admin)
+  end
+
+  def user_image
+    params.require(:user).permit(:image)
   end
 end
 

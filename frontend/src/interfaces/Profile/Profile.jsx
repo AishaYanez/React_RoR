@@ -1,6 +1,13 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext/AuthContext'
+
+import { PlusOutlined } from '@ant-design/icons';
+import {
+  Form,
+  Switch,
+  Upload,
+} from 'antd';
 
 import Popup from '../../components/PopUp/Popup'
 import './Profile.css';
@@ -15,8 +22,13 @@ function Profile() {
   const [popup, setPopup] = useState(false);
   const userContext = useContext(AuthContext);
   const userData = userContext[3];
+  const setUserData = userContext[3];
   const [settings, setSettings] = useState(userData.setting);
-  const [image, setImage] = useState(userData.image);
+
+
+  useEffect(() => {
+    handleUpdateSettings();
+  }, [settings]);
 
   //Create PopUp for change password
   const changePassword = () => {
@@ -90,24 +102,27 @@ function Profile() {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setImage(file);
-
-    UserService(userData.id, image).then(r => console.log(r)).catch(err => console.error(err));
+    setUserData()
+    handleUpdateImage(file);
   };
 
-  const handleInputSettings = (e) => {
-    const { name, type, checked, value } = e.target;
+  const handleUpdateImage = (image) => {
+    const formData = new FormData();
+    formData.append('user[image]', image);
+    UserService.updateUserImage(userData.id, formData).then(r => console.log(r)).catch(err => console.error(err));
+  }
 
-    const newValue = type === 'checkbox' ? checked : value;
-
+  const handleInputSettings = (name, value) => {
     setSettings((prevData) => ({
       ...prevData,
-      [name]: newValue,
+      [name]: value,
     }));
+  };
 
-      UserService.updateSettings(settings.id, settingsFormData())
-        .then(r => console.log(r))
-        .catch(err => console.error(err));
+  const handleUpdateSettings = () => {
+    UserService.updateSettings(settings.id, settingsFormData())
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
   };
 
   const settingsFormData = () => {
@@ -115,7 +130,6 @@ function Profile() {
 
     formData.append('setting[font_size]', settings.font_size)
     formData.append('setting[light_mode]', settings.light_mode)
-    console.log('hola');
     return formData;
   }
 
@@ -123,17 +137,27 @@ function Profile() {
     <div className="profile">
       <form>
         <div className="img-container">
-          <img src={userData.image.url} alt="Foto de perfil de usuario" />
+        {/* <Form.Item label="Upload" valuePropName="fileList" getValueFromEvent={normFile}>
+          <Upload action="/upload.do" listType="picture-card">
+            <div>
+              <PlusOutlined />
+              <div style={{ marginTop: 8 }}>Upload</div>
+            </div>
+          </Upload>
+          
+        </Form.Item> */}
+          <img src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
           <input onChange={handleFileChange} type="file" accept="image/*" multiple={false} />
         </div>
         <div className="settings-container">
-          <label htmlFor="lightMode">Modo luminoso:</label>
-          <input onChange={(e => handleInputSettings(e))} checked={settings.light_mode} type="checkbox" name="light_mode" id="lightMode" />
           <br />
+          <Form.Item label="Modo luminoso:" valuePropName="checked">
+            <Switch onChange={(checked) => handleInputSettings('light_mode', checked)} checked={settings.light_mode} type="checkbox" name="light_mode" id="lightMode" />
+          </Form.Item>
           <label htmlFor="normalFontSize">Normal:</label>
-          <input checked={settings.font_size === 'normal'} onChange={(e => handleInputSettings(e))} type="radio" name="font_size" id="normalFontSize" value="normal" />
+          <input checked={settings.font_size === 'normal'} onChange={() => handleInputSettings('font_size', 'normal')} type="radio" name="font_size" id="normalFontSize" value="normal" />
           <label htmlFor="BigFontSize">Grande:</label>
-          <input checked={settings.font_size === 'big'} onChange={(e => handleInputSettings(e))} type="radio" name="font_size" id="BigFontSize" value="big" />
+          <input checked={settings.font_size === 'big'} onChange={() => handleInputSettings('font_size', 'big')} type="radio" name="font_size" id="BigFontSize" value="big" />
         </div>
       </form>
       <div className='account-data'>

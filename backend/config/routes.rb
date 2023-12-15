@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       namespace :users, path: "" do
         resources :users do
           put "update_password", on: :member
+          put "update_image", on: :member
         end
         resources :settings
         resources :employees
