@@ -31,9 +31,6 @@ function FormActivity(props) {
       ...prevData,
       activityImage: file,
     }));
-
-    console.log(file);
-    console.log(activityData);
   };
 
 

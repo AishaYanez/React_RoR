@@ -27,7 +27,6 @@ function Popup(props) {
     });
 
     if(!condition){
-      console.log(inputs);
       method(inputs);
       setFormError(false);
     }

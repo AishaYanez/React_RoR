@@ -8,11 +8,9 @@ const api = axios.create({
   }
 });
 
-// Añadir un interceptor para manejar solicitudes con FormData
 api.interceptors.request.use(
   (config) => {
     if (config.data instanceof FormData) {
-      // Si la solicitud tiene datos FormData, configura el encabezado adecuadamente
       config.headers["Content-Type"] = "multipart/form-data";
     }
     return config;

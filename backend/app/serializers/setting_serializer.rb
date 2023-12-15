@@ -1,3 +1,3 @@
 class SettingSerializer < ActiveModel::Serializer
-  attributes :font_size, :light_mode
+  attributes :id, :font_size, :light_mode
 end

@@ -50,11 +50,12 @@ function Login() {
     let credentials =  btoa(`${user.email}:${user.password}`);
 
     AuthService.loginUser(credentials)
-    .then(r => {
-      nav('/activities')
-      userStatus[1](r.data);
-    }).catch(e => {
-      console.error(e);
+    .then(response => {
+      nav('/activities');
+      userStatus[1](response.data);
+    })
+    .catch(error => {
+      console.error(error);
     });
   }
 
