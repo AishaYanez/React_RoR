@@ -1,0 +1,93 @@
+.popup-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profile {
+  display: block;
+  width: 100%;
+}
+
+.form-user{
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+}
+
+.img-profile {
+  width: 80px;
+  height: 100px;
+  background-color: #232528;
+  position: relative;
+  align-self: center;
+  border-radius: 40px;
+}
+
+.img-profile > img {
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 100px;
+  position: absolute;
+  border-radius: 40px;
+}
+
+.img-label {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #EAF6FF;
+  padding: 0px;
+  border-radius: 15px;
+  bottom: 0px;
+  box-shadow: -1px -1px 4px #232528;
+  cursor: pointer;
+}
+
+.img-btn {
+  text-indent: -9999px;
+  overflow: hidden;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.icon-profile {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  font-size: 18px;
+  color: #232528;
+}
+
+.settings-container{
+  /* display: block;
+  margin: 60px; */
+  border: 2px solid #ccc; /* Puedes ajustar el color y el grosor del borde según tus preferencias */
+  padding: 10px; /* Ajusta el espaciado interno según tus preferencias */
+  margin: 10px; /* Ajusta el espaciado externo según tus preferencias */
+  text-align: center; 
+}
+
+.settings-container::before{
+  content: "Settings";
+  display: block;
+  font-size: 16px; /* Puedes ajustar el tamaño de la fuente según tus preferencias */
+  margin-bottom: 10px;
+}
+
+.data-change{
+  color: #232528;
+  cursor: pointer;
+}
+
+.data-change.dark{
+  color: #EAF6FF;
+}
+
+body.dark {
+  background-color: #232528;
+}
