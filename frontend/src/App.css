@@ -5,14 +5,12 @@
 
 .App {
   text-align: center;
-  /* overflow-x: hidden; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.content-container {
+  height: 100%;
 }

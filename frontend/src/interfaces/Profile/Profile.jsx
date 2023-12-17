@@ -2,11 +2,14 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext/AuthContext'
 
-import { PlusOutlined } from '@ant-design/icons';
+import {
+  FileImageFilled
+} from '@ant-design/icons';
+
 import {
   Form,
   Switch,
-  Upload,
+  message
 } from 'antd';
 
 import Popup from '../../components/PopUp/Popup'
@@ -135,29 +138,23 @@ function Profile() {
   return (
     <div className="profile">
       <form className="form-user">
-        <div className="img-container">
-          <Form.Item valuePropName="fileList" >
-            <Upload accept="image/*" multiple={false} action="/upload.do" listType="picture-card">
-              <div className="img-profile-container">
-                <PlusOutlined />
-                  <img className="image-profile" src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
-              </div>
-            </Upload>
-          </Form.Item>
-        </div>
-        <div className="img-container">
+        <div className="img-profile">
           <img src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
-          <input onChange={handleFileChange} type="file" accept="image/*" multiple={false} />
+            <label className="img-label" htmlFor="img-btn">
+            <input id="img-btn" className="img-btn" onChange={handleFileChange} type="file" accept="image/*" multiple={false} />
+            <FileImageFilled className="icon-profile"/>
+            </label>
         </div>
         <div className="settings-container">
-          <br />
           <Form.Item label="Modo luminoso:" valuePropName="checked">
             <Switch onChange={(checked) => handleInputSettings('light_mode', checked)} checked={settings.light_mode} type="checkbox" name="light_mode" id="lightMode" />
           </Form.Item>
-          <label htmlFor="normalFontSize">Normal:</label>
+          <label htmlFor="normalFontSize">Normal:
           <input checked={settings.font_size === 'normal'} onChange={() => handleInputSettings('font_size', 'normal')} type="radio" name="font_size" id="normalFontSize" value="normal" />
-          <label htmlFor="BigFontSize">Grande:</label>
+          </label>
+          <label htmlFor="BigFontSize">Grande:
           <input checked={settings.font_size === 'big'} onChange={() => handleInputSettings('font_size', 'big')} type="radio" name="font_size" id="BigFontSize" value="big" />
+          </label>
         </div>
       </form>
       <div className='account-data'>

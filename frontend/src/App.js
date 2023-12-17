@@ -34,30 +34,34 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/" element={<Auth />} />
-          <Route
-            path="/profile"
-            element={userContext[0] !== 'visit' ? <Profile /> : <Navigate to="/" />}
-          />
-          <Route path="/activities" element={<ActList />} />
-          <Route path='/activities/activity/:id' element={<Activity/>}/>
-        </Routes>
+        <div className='content-container'>
+          <Routes>
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/" element={<Auth />} />
+            <Route
+              path="/profile"
+              element={userContext[0] !== 'visit' ? <Profile /> : <Navigate to="/" />}
+            />
+            <Route path="/activities" element={<ActList />} />
+            <Route path='/activities/activity/:id' element={<Activity />} />
+          </Routes>
+        </div>
       </BrowserRouter>
       <Footer />
-    </div>
+    </>
   );
 }
 
 function AddProviderApp() {
   return (
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+    <div className="App">
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </div>
   );
 }
 

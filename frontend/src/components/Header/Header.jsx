@@ -11,7 +11,7 @@ function Header() {
   }
 
   return (
-    <header>
+    <header className="light">
       <div className="main-header">
         <div className="header-logo-container"><img src="/Logo/Logo-claro-sinBG.png" alt="Logo de la empresa, hombre/estrella de color rojo cayendo envuelto en una linea negra." /></div>
         <div onClick={changeIcon} className="icon-menu-container">

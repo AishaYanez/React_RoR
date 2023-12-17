@@ -1,5 +1,5 @@
 .close > * {
-  margin: -100px;
+  margin: -50px;
   width: 0px;
   height: 0px;
   padding: 0px;
@@ -7,7 +7,7 @@
 }
 
 .close {
-  margin: -100px;
+  margin: -50px;
   width: 0px;
   height: 0px;
   padding: 0px;
