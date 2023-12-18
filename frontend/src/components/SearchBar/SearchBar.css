@@ -13,14 +13,14 @@
 }
 
 .open > button {
-  width: 30px;
-  height: 5px;
+  width: auto;
+  height: 20px;
   padding: 0px;
   opacity: 1;
 }
 .open > input {
   width: 90px;
-  height: 5px;
+  height: 20px;
   padding: 0px;
   opacity: 1;
 }
@@ -28,7 +28,7 @@
 .open {
   margin: auto;
   width: 200px;
-  height: 10px;
+  height: 20px;
   padding: 0px;
   opacity: 1;
 }
