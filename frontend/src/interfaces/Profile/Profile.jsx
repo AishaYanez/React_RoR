@@ -25,7 +25,6 @@ function Profile() {
   const [popup, setPopup] = useState(false);
   const userContext = useContext(AuthContext);
   const userData = userContext[3];
-  // const setUserData = userContext[4];
   const [settings, setSettings] = useState(userData.setting);
 
 
@@ -102,16 +101,25 @@ function Profile() {
     setPopup(false);
   };
 
+  const updateUser = () => {
+    if (localStorage.getItem('token') !== null) {
+      AuthService.checkAuth().then(res => {
+        userContext[1](res);
+      }).catch(
+        err => console.error(err)
+      );
+    }
+  }
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    // setUserData()
     handleUpdateImage(file);
   };
 
   const handleUpdateImage = (image) => {
     const formData = new FormData();
     formData.append('user[image]', image);
-    UserService.updateUserImage(userData.id, formData).then(r => console.log(r)).catch(err => console.error(err));
+    UserService.updateUserImage(userData.id, formData).then(r => updateUser()).catch(err => console.error(err));
   }
 
   const handleInputSettings = (name, value) => {
@@ -140,22 +148,24 @@ function Profile() {
       <form className="form-user">
         <div className="img-profile">
           <img src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
-            <label className="img-label" htmlFor="img-btn">
+          <label className="img-label" htmlFor="img-btn">
             <input id="img-btn" className="img-btn" onChange={handleFileChange} type="file" accept="image/*" multiple={false} />
-            <FileImageFilled className="icon-profile"/>
-            </label>
+            <FileImageFilled className="icon-profile" />
+          </label>
         </div>
         <div className="settings-container">
           <p className="settings-header">Settings</p>
-          <Form.Item label="Modo luminoso:" valuePropName="checked">
-            <Switch onChange={(checked) => handleInputSettings('light_mode', checked)} checked={settings.light_mode} type="checkbox" name="light_mode" id="lightMode" />
-          </Form.Item>
-          <label htmlFor="normalFontSize">Normal:
-          <input checked={settings.font_size === 'normal'} onChange={() => handleInputSettings('font_size', 'normal')} type="radio" name="font_size" id="normalFontSize" value="normal" />
+          <label className="label-switch" htmlFor="light_mode">Modo luminoso:
+            <Switch  id="light_mode" onChange={(checked) => handleInputSettings('light_mode', checked)} checked={settings.light_mode} type="checkbox" name="light_mode" />
           </label>
-          <label htmlFor="BigFontSize">Grande:
-          <input checked={settings.font_size === 'big'} onChange={() => handleInputSettings('font_size', 'big')} type="radio" name="font_size" id="BigFontSize" value="big" />
-          </label>
+          <div className="font-size-fields-container">
+            <label htmlFor="normalFontSize">Normal:
+              <input className="fields" checked={settings.font_size === 'normal'} onChange={() => handleInputSettings('font_size', 'normal')} type="radio" name="font_size" id="normalFontSize" value="normal" />
+            </label>
+            <label htmlFor="BigFontSize">Grande:
+              <input className="fields" checked={settings.font_size === 'big'} onChange={() => handleInputSettings('font_size', 'big')} type="radio" name="font_size" id="BigFontSize" value="big" />
+            </label>
+          </div>
         </div>
       </form>
       <div className='account-data'>
