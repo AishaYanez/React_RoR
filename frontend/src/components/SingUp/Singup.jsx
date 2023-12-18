@@ -1,4 +1,6 @@
-
+import {
+  message
+} from 'antd';
 
 import AuthService from '../../services/Auth/auth.service';
 import './Singup.css';
@@ -101,9 +103,9 @@ function Singup({ changeForm }) {
     AuthService.createAccount(credentials, userData)
       .then(r => {
         changeForm()
-        console.log(r.data);
+        message.success('Nuevo usuario creado correctamente')
       }).catch(e => {
-        console.error(e);
+        message.error('Email o nickname ya en uso')
       });
   }
 

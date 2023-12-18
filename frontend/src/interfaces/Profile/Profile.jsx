@@ -7,7 +7,6 @@ import {
 } from '@ant-design/icons';
 
 import {
-  Form,
   Switch,
   message
 } from 'antd';
@@ -55,11 +54,14 @@ function Profile() {
         method: (val) => {
           let credentials = btoa(`${val[0]}:${val[1]}`);
           UserService.updateUserPassword(userData.id, credentials).then(res => {
-            nav('/auth');
+            message.success('Contraseña cambiada correctamente')
             closePopup()
           }
-          ).catch(err => console.error(err))
-        },
+          ).catch(err => 
+            {
+              message.error('Contraseña incorrecta');
+            }
+        )},
         value: 'Cambiar'
       }
     }
@@ -84,6 +86,7 @@ function Profile() {
       button: {
         method: (val) => {
           AuthService.deleteAccount().then(res => {
+            message.destroy('Cuenta borrada')
             nav('/auth');
             localStorage.removeItem('token');
             closePopup()
@@ -156,7 +159,7 @@ function Profile() {
         <div className="settings-container">
           <p className="settings-header">Settings</p>
           <label className="label-switch" htmlFor="light_mode">Modo luminoso:
-            <Switch  id="light_mode" onChange={(checked) => handleInputSettings('light_mode', checked)} checked={settings.light_mode} type="checkbox" name="light_mode" />
+            <Switch id="light_mode" onChange={(checked) => handleInputSettings('light_mode', checked)} checked={settings.light_mode} type="checkbox" name="light_mode" />
           </label>
           <div className="font-size-fields-container">
             <label htmlFor="normalFontSize">Normal:

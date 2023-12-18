@@ -25,7 +25,6 @@ function Activity() {
 
   const inscription = () => {
     let formData = new FormData();
-
     formData.append('client_id', userData.id)
     ActivityService.addClient(id, formData).then(r => console.log(r)).catch(err => console.error(err))
   }
@@ -43,7 +42,7 @@ function Activity() {
           <p>{activity.name}</p>
           <p>{activity.description}</p>
         </div>
-        <div>
+        <div className="btn-container">
           {userData && <button className="btn-submit btn-activity" onClick={inscription}>Inscribirse</button>}
         </div>
       </div>

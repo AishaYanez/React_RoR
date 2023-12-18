@@ -24,6 +24,7 @@ export function AuthProvider({ children }) {
   
   const logoutContext = () => {
     setUserStatus('visit');
+    setUserData();
   };
 
   return (
