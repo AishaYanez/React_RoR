@@ -23,12 +23,12 @@ img {
   right: 10px;
   width: 65px;
   height: 80px;
-  color: #232528;
-  background-color: red;
-  border-radius: 45px
+  background-color: #232528;
+  
+  border-radius: 50px
 }
 
 .image-coordinator > img {
-  border-radius: 15px;
+  border-radius: 50px;
   height: 100%;
 }

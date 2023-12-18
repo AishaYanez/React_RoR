@@ -10,7 +10,7 @@ function Activity() {
   const userContext = useContext(AuthContext);
   const userData = userContext[3];
 
-  async function fetchActivity() {
+  const fetchActivity = async() => {
     try {
       const fetchedActivity = (await ActivityService.getActivity(id)).data;
       setActivity(fetchedActivity);
@@ -35,9 +35,9 @@ function Activity() {
       <div className="content-container">
         <div className="image-container">
             <img src={activity.image ? activity.image.url : '/Imgs/default_place.png'} alt="Imagen descriptiva de la actividad" />
-          <div className="image-coordinator">
-            {/* <img src={activity.coordinator.image ? activity.coordinator.image.url: '/Imgs/default_user.png'} alt="Imagen de perfil del coordinador" /> */}
-          </div>
+          {activity.coordinator && <div className="image-coordinator">
+            <img src={activity.coordinator.image ? activity.coordinator.image.url: '/Imgs/default_user.png'} alt="Imagen de perfil del coordinador" />
+          </div> }
         </div>
         <div className="data-activity">
           <p>{activity.name}</p>
