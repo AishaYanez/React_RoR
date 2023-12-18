@@ -33,7 +33,7 @@ function ActivitiesList() {
   }, []);
 
   const showSearchBar = () => {
-    setStatusSearch('show');
+    setStatusSearch('open');
   }
   const closeSearchBar = () => {
     fetchActivities();

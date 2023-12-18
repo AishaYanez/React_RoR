@@ -1,5 +1,4 @@
 .close > * {
-  margin: -50px;
   width: 0px;
   height: 0px;
   padding: 0px;
@@ -7,7 +6,6 @@
 }
 
 .close {
-  margin: -50px;
   width: 0px;
   height: 0px;
   padding: 0px;
@@ -15,14 +13,12 @@
 }
 
 .open > button {
-  margin: -10px 0;
   width: 30px;
   height: 5px;
   padding: 0px;
   opacity: 1;
 }
 .open > input {
-  margin: -10px 0;
   width: 90px;
   height: 5px;
   padding: 0px;

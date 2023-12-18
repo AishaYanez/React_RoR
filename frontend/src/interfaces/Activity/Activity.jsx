@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import ActivityService from "../../services/Activity/activity.service";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
+import './Activity.css';
 
 function Activity() {
   const { id } = useParams();
@@ -25,29 +26,25 @@ function Activity() {
   const inscription = () => {
     let formData = new FormData();
 
-    console.log(id);
-    console.log(userData.id);
     formData.append('client_id', userData.id)
-    console.log(formData);
     ActivityService.addClient(id, formData).then(r => console.log(r)).catch(err => console.error(err))
   }
 
    const showActivity = () => {
     return (
       <div className="content-container">
-        <div className="images-container">
-          <div className="image-activity">
+        <div className="image-container">
             <img src={activity.image ? activity.image.url : '/Imgs/default_place.png'} alt="Imagen descriptiva de la actividad" />
-          </div>
           <div className="image-coordinator">
-
+            {/* <img src={activity.coordinator.image ? activity.coordinator.image.url: '/Imgs/default_user.png'} alt="Imagen de perfil del coordinador" /> */}
           </div>
         </div>
         <div className="data-activity">
           <p>{activity.name}</p>
+          <p>{activity.description}</p>
         </div>
         <div>
-          {userData && <button onClick={inscription}>Inscribirse</button>}
+          {userData && <button className="btn-submit btn-activity" onClick={inscription}>Inscribirse</button>}
         </div>
       </div>
     );

@@ -1,0 +1,34 @@
+.image-container {
+  max-width: 100vw;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.content-container {
+  min-height: calc(100vh - 135px - 60px);
+}
+
+.btn-activity {
+  padding: 2px 5px;
+  border: 1px solid #23252828;
+}
+
+.image-coordinator {
+  position: absolute;
+  bottom: -30px;
+  right: 10px;
+  width: 65px;
+  height: 80px;
+  color: #232528;
+  background-color: red;
+  border-radius: 45px
+}
+
+.image-coordinator > img {
+  border-radius: 15px;
+  height: 100%;
+}
