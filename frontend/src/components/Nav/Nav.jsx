@@ -5,12 +5,14 @@ import './Nav.css';
 import { useContext } from 'react';
 
 import { AuthContext } from '../../context/AuthContext/AuthContext';
+import { message } from 'antd';
 
 function Nav() {
   const nav = useNavigate();
   const userStatus = useContext(AuthContext);
 
   const logoutActions = () => {
+    message.warning('Logout exitoso');
     nav('/auth')
     userStatus[2]();
     localStorage.removeItem('token');

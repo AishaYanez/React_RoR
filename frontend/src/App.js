@@ -37,7 +37,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <div className='content-container'>
+        <main className='content-container'>
           <Routes>
             <Route path="/auth" element={<Auth />} />
             <Route path="/" element={<Auth />} />
@@ -48,7 +48,7 @@ function App() {
             <Route path="/activities" element={<ActList />} />
             <Route path='/activities/activity/:id' element={<Activity />} />
           </Routes>
-        </div>
+        </main>
       </BrowserRouter>
       <Footer />
     </>

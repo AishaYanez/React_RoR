@@ -57,11 +57,11 @@ function Profile() {
             message.success('Contraseña cambiada correctamente')
             closePopup()
           }
-          ).catch(err => 
-            {
-              message.error('Contraseña incorrecta');
-            }
-        )},
+          ).catch(err => {
+            message.error('Contraseña incorrecta');
+          }
+          )
+        },
         value: 'Cambiar'
       }
     }
@@ -146,38 +146,46 @@ function Profile() {
     return formData;
   }
 
-  return (
-    <div className="profile">
-      <form className="form-user">
-        <div className="img-profile">
-          <img src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
-          <label className="img-label" htmlFor="img-btn">
-            <input id="img-btn" className="img-btn" onChange={handleFileChange} type="file" accept="image/*" multiple={false} />
-            <FileImageFilled className="icon-profile" />
-          </label>
-        </div>
-        <div className="settings-container">
-          <p className="settings-header">Settings</p>
-          <label className="label-switch" htmlFor="light_mode">Modo luminoso:
-            <Switch id="light_mode" onChange={(checked) => handleInputSettings('light_mode', checked)} checked={settings.light_mode} type="checkbox" name="light_mode" />
-          </label>
-          <div className="font-size-fields-container">
-            <label htmlFor="normalFontSize">Normal:
-              <input className="fields" checked={settings.font_size === 'normal'} onChange={() => handleInputSettings('font_size', 'normal')} type="radio" name="font_size" id="normalFontSize" value="normal" />
-            </label>
-            <label htmlFor="BigFontSize">Grande:
-              <input className="fields" checked={settings.font_size === 'big'} onChange={() => handleInputSettings('font_size', 'big')} type="radio" name="font_size" id="BigFontSize" value="big" />
+  const showProfile = () => {
+    return (
+      <>
+        <form className="form-user">
+          <div className="img-profile">
+            <img src={userData.image ? userData.image.url : '/Imgs/default_user.png'} alt="Foto de perfil de usuario" />
+            <label className="img-label" htmlFor="img-btn">
+              <input id="img-btn" className="img-btn" onChange={handleFileChange} type="file" accept="image/*" multiple={false} />
+              <FileImageFilled className="icon-profile" />
             </label>
           </div>
+          <div className="settings-container">
+            <p className="settings-header">Settings</p>
+            <label className="label-switch" htmlFor="light_mode">Modo luminoso:
+              <Switch id="light_mode" onChange={(checked) => handleInputSettings('light_mode', checked)} checked={settings.light_mode} type="checkbox" name="light_mode" />
+            </label>
+            <div className="font-size-fields-container">
+              <label htmlFor="normalFontSize">Normal:
+                <input className="fields" checked={settings.font_size === 'normal'} onChange={() => handleInputSettings('font_size', 'normal')} type="radio" name="font_size" id="normalFontSize" value="normal" />
+              </label>
+              <label htmlFor="BigFontSize">Grande:
+                <input className="fields" checked={settings.font_size === 'big'} onChange={() => handleInputSettings('font_size', 'big')} type="radio" name="font_size" id="BigFontSize" value="big" />
+              </label>
+            </div>
+          </div>
+        </form>
+        <div className='account-data'>
+          <p onClick={changePassword} className='data-change'>Cambiar contraseña</p>
+          <p onClick={deleteAccount} className='data-change'>Borrar cuenta</p>
         </div>
-      </form>
-      <div className='account-data'>
-        <p onClick={changePassword} className='data-change'>Cambiar contraseña</p>
-        <p onClick={deleteAccount} className='data-change'>Borrar cuenta</p>
-      </div>
-      <div className="popup-container">
-        {popup && <Popup data={data} closePopup={closePopup} />}
-      </div>
+        <div className="popup-container">
+          {popup && <Popup data={data} closePopup={closePopup} />}
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <div className="profile">
+      {userData && showProfile()}
     </div>
   );
 }
