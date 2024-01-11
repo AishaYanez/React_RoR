@@ -17,6 +17,3 @@ config/local/
 # Ignore user-specific files and settings
 .vscode/
 *.sublime-*
-
-# Ignore npm logs
-npm-debug.log*
