@@ -56,6 +56,12 @@ function Nav() {
             <p>Actividades</p>
           </Link>
         </li>
+        <li className='report-link'>
+          <a href='http://localhost:5488/templates/wZPcEggEQ' className='link'>
+            <div className='nav-icon'></div>
+            <p>Reporte</p>
+          </a>
+        </li>
         <li onClick={logOut}>
           <div className='link'>
             <div className='nav-icon'>

@@ -7,8 +7,10 @@
         "$$date": 1705073287994
     },
     "modificationDate": {
-        "$$date": 1705073287994
+        "$$date": 1705236585357
     },
     "_id": "UVmanGCKkyplEdgE",
-    "$entitySet": "scripts"
+    "$entitySet": "scripts",
+    "scope": "template",
+    "isGlobal": false
 }

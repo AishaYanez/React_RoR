@@ -1,21 +1,83 @@
-<html>
-  <head>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/metro/4.1.5/css/metro.min.css">
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js'></script>
-  </head>
-  <body>
-    <h1>Hola</h1>
-    {{#each activities}}
-    <h1>Hola</h1>
-        <!-- add hiden information to the page which is resolved in OrdersHeader template
-             during the pdf merge. See the docs about pdf utils extension for more details. -->
-        {{!-- <canvas id='orders{{country}}' style="margin-bottom:30px"></canvas> --}}
-  
+<!DOCTYPE html>
+<html lang="es">
 
-       
-        <div style='page-break-after: always;'>
-        </div>
-    {{/each}}
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Actividades</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+</head>
+
+<body>
+    <h1>Reporte de actividades</h1>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Total de asistentes</th>
+                    <th>Cantidad de clientes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each activities}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{date}}</td>
+                    <td>{{sumFields clients.length assistants.length}}</td>
+
+                    <td>{{clients.length}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="ct-chart" id="clientsChart" style="max-width: 700px;"></div>
+
+    <script>
+        function sumFields(f1, f2) {
+            return f1 + f2 + 1;
+        }
+    </script>
+
+    <script>
+        var activities = [
+            {{#each activities}}
+                { name: "{{name}}", clients: {{#if clients.length}}{{clients.length}}{{else}}0{{/if}} },
+            {{/each}}
+        ];
+
+        activities.forEach(function (activity) {
+            activity.clients = Math.floor(activity.clients);
+        });
+
+        var clientsData = {
+            labels: activities.map(function (activity) {
+                return activity.name;
+            }),
+            series: [activities.map(function (activity) {
+                return activity.clients;
+            })]
+        };
+
+        var options = {
+            axisX: {
+                labelInterpolationFnc: function (value, index) {
+                    return clientsData.labels[index];
+                }
+            },
+            axisY: {
+                onlyInteger: true,
+                high: Math.max(...activities.map(activity => activity.clients)) + 2
+            }
+        };
+
+        new Chartist.Bar('#clientsChart', clientsData, options);
+    </script>
+</body>
+
 </html>

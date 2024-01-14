@@ -1,52 +1,18 @@
-const http = require('http');
+const fetch = require('node-fetch');
 
-function fetchActivities() {
-    console.log('hora');
-    return new Promise((resolve, reject) => {
-        http.get('http://localhost:4000/api/v1/activities',
-        (result) => {
-            var str = '';
-            result.on('data', (b) => str += b);
-            result.on('error', reject);
-            result.on('end', () => resolve(JSON.parse(str).value));
-        });
-    });
+async function fetchActivities() {
+    const response = await fetch('http://localhost:4000/api/v1/activities');
+    if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status} ${response.statusText}`);
+    }
+    const activities = await response.json();
+    return activities;
 }
 
-// group the data for report
-// async function prepareDataSource() {
-//     const orders = await fetchOrders()
-//     const ordersByShipCountry = orders.reduce((a, v) => {
-//         a[v.ShipCountry] = a[v.ShipCountry] || []
-//         a[v.ShipCountry].push(v)
-//         return a
-//     }, {})
-
-//     return Object.keys(ordersByShipCountry).map((country) => {
-//         const ordersInCountry = ordersByShipCountry[country]
-
-//         const accumulated = {}
-
-//         ordersInCountry.forEach((o) => {
-//             o.OrderDate = new Date(o.OrderDate);
-//             const key = o.OrderDate.getFullYear() + '/' + (o.OrderDate.getMonth() + 1);
-//             accumulated[key] = accumulated[key] || {
-//                 value: 0,
-//                 orderDate: o.OrderDate
-//             };
-//             accumulated[key].value++;
-//         });
-
-//         return {
-//             rows: ordersInCountry,
-//             country,
-//             accumulated
-//         }
-
-//     }).slice(0, 2)
-// }
-
-// add jsreport hook which modifies the report input data
 async function beforeRender(req, res) {
-    req.data.activities = await fetchActivities();
+    try {
+        req.data.activities = await fetchActivities();
+    } catch (error) {
+        console.error('Error fetching activities:', error);
+    }
 }
