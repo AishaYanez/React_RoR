@@ -29,7 +29,6 @@ function afterRender(req, res) {
     },
   });
 
-  // Opciones del correo electrónico
   const mailOptions = {
     from: 'sender@example.com',
     to: 'recipient@example.com',
