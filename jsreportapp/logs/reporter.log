@@ -6784,3 +6784,253 @@ ReferenceError: __report_root__ is not defined
 2024-01-14T23:56:29.597Z - info: Starting rendering request 10 rootId=c7igd46nz9sfoac, id=c7igd46nz9sfoac
 2024-01-14T23:56:29.598Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=c7igd46nz9sfoac, id=c7igd46nz9sfoac
 2024-01-14T23:56:29.710Z - info: Rendering request 10 finished in 120 ms rootId=c7igd46nz9sfoac, id=c7igd46nz9sfoac
+2024-01-15T10:40:04.075Z - info: Initializing jsreport (version: 4.2.0, configuration file: jsreport.config.json, nodejs: 20.9.0)
+2024-01-15T10:40:04.080Z - info: Searching for available extensions in /home/ruby/workspace/React_RoR/jsreportapp/
+2024-01-15T10:40:04.094Z - info: Extensions location cache contains up to date information, skipping crawling in /home/ruby/workspace/React_RoR/jsreportapp/
+2024-01-15T10:40:04.107Z - info: Found 35 extension(s)
+2024-01-15T10:40:04.259Z - info: Using extension base@4.0.0
+2024-01-15T10:40:04.268Z - info: Using extension child-templates@4.0.0
+2024-01-15T10:40:04.273Z - info: Using extension cli@4.0.2
+2024-01-15T10:40:04.277Z - info: Using extension components@4.0.0
+2024-01-15T10:40:04.279Z - info: Using extension data@4.0.0
+2024-01-15T10:40:04.281Z - info: Using extension express@4.0.1
+2024-01-15T10:40:04.794Z - info: Using extension freeze@4.0.0
+2024-01-15T10:40:04.796Z - info: Using extension fs-store@4.0.1
+2024-01-15T10:40:04.999Z - info: Using extension handlebars@4.0.1
+2024-01-15T10:40:05.002Z - info: Using extension import-export@4.0.2
+2024-01-15T10:40:05.021Z - info: Using extension jsrender@4.0.0
+2024-01-15T10:40:05.023Z - info: Using extension licensing@4.0.1
+2024-01-15T10:40:05.031Z - info: Using extension localization@4.0.1
+2024-01-15T10:40:05.033Z - info: Using extension npm@4.0.0
+2024-01-15T10:40:05.045Z - info: Using extension pdf-utils@4.0.2
+2024-01-15T10:40:05.050Z - info: Using extension reports@4.0.0
+2024-01-15T10:40:05.057Z - info: Using extension tags@4.0.1
+2024-01-15T10:40:05.060Z - info: Using extension text@4.0.0
+2024-01-15T10:40:05.062Z - info: Using extension version-control@4.0.0
+2024-01-15T10:40:05.088Z - info: Using extension assets@4.0.2
+2024-01-15T10:40:05.109Z - info: Using extension authorization@4.0.0
+2024-01-15T10:40:05.116Z - info: Using extension browser-client@4.0.0
+2024-01-15T10:40:05.121Z - info: Using extension chrome-pdf@4.0.0
+2024-01-15T10:40:05.128Z - info: Using extension docx@4.1.1
+2024-01-15T10:40:05.132Z - info: Using extension html-to-xlsx@4.0.1
+2024-01-15T10:40:05.782Z - info: html-to-xlsx detected chrome as available html engine
+2024-01-15T10:40:05.783Z - info: Using extension pptx@4.1.0
+2024-01-15T10:40:05.787Z - info: Using extension scheduling@4.0.0
+2024-01-15T10:40:05.851Z - info: Using extension scripts@4.0.0
+2024-01-15T10:40:05.852Z - info: Using extension static-pdf@4.0.0
+2024-01-15T10:40:05.854Z - info: Using extension studio@4.0.2
+2024-01-15T10:40:05.998Z - info: Using extension xlsx@4.0.2
+2024-01-15T10:40:06.001Z - info: Using extension public-templates@4.0.0
+2024-01-15T10:40:06.004Z - info: Using extension sample-template@4.0.0
+2024-01-15T10:40:06.007Z - info: Using extension studio-theme-dark@4.0.0
+2024-01-15T10:40:06.012Z - info: Code sandboxing is disabled, users can potentially penetrate the local system if you allow code from external users to be part of your reports
+2024-01-15T10:40:06.013Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2024-01-15T10:40:06.013Z - info: Using fs provider for template store.
+2024-01-15T10:40:06.022Z - info: fs store is persisting using fs for /home/ruby/workspace/React_RoR/jsreportapp/data
+2024-01-15T10:40:06.033Z - info: fs store is loading data
+2024-01-15T10:40:06.120Z - info: fs store is initialized successfully
+2024-01-15T10:40:06.147Z - info: Creating default express app.
+2024-01-15T10:40:06.196Z - info: jsreport server successfully started on http port: 5488
+2024-01-15T10:40:06.198Z - info: Verifying license key free
+2024-01-15T10:40:06.199Z - info: Using free license
+2024-01-15T10:40:06.205Z - info: Initializing worker threads
+2024-01-15T10:40:06.481Z - info: 2 worker threads initialized in 276ms
+2024-01-15T10:40:06.482Z - info: Starting temp files cleanup with 180000ms threshold
+2024-01-15T10:40:06.483Z - info: reporter initialized
+2024-01-15T10:41:32.640Z - info: Render request 1 queued for execution and waiting for available worker rootId=f0cge85wcxh4ayi, id=f0cge85wcxh4ayi
+2024-01-15T10:41:32.706Z - info: Starting rendering request 1 rootId=f0cge85wcxh4ayi, id=f0cge85wcxh4ayi
+2024-01-15T10:41:32.706Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=f0cge85wcxh4ayi, id=f0cge85wcxh4ayi
+2024-01-15T10:41:34.708Z - warn: Error when processing render request 1
+(because) error when evaluating engine handlebars for template /Stillhigher/activities-users-main
+(because) missing helper: "sumFields"
+Error: Missing helper: "sumFields"
+    at Object.<anonymous> (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/helpers/helper-missing.js:19:13)
+    at Object.wrapper (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/internal/wrapHelper.js:15:19)
+    at 1 (eval at compile (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-handlebars/lib/handlebarsEngine.js:35:30), <anonymous>:16:108)
+    at prog (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/runtime.js:268:12)
+    at execIteration (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/helpers/each.js:51:19)
+    at Object.<anonymous> (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/helpers/each.js:61:13)
+    at Object.wrapper (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/internal/wrapHelper.js:15:19)
+    at Object.main (eval at compile (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-handlebars/lib/handlebarsEngine.js:35:30), <anonymous>:53:49)
+    at main (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/runtime.js:208:32)
+    at ret (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/runtime.js:212:12)
+wrapped by:
+Error: Error when evaluating engine handlebars for template /Stillhigher/activities-users-main
+(because) missing helper: "sumFields"
+    at module.exports (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/shared/createError.js:10:13)
+    at WorkerReporter.createError (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/shared/reporter.js:49:12)
+    at executeEngine (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/executeEngine.js:310:33)
+    at async engine.engine (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/executeEngine.js:115:14)
+    at async invokeRender (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/render.js:61:23)
+    at async WorkerReporter._render (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/render.js:142:7)
+    at async /home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/reporter.js:224:19
+    at async processAndResponse (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/advanced-workers/lib/workerHandler.js:41:17) rootId=f0cge85wcxh4ayi, id=f0cge85wcxh4ayi
+2024-01-15T10:41:34.709Z - warn: Rendering request 1 finished with error in 2072 ms rootId=f0cge85wcxh4ayi, id=f0cge85wcxh4ayi
+2024-01-15T10:41:52.834Z - info: Initializing jsreport (version: 4.2.0, configuration file: jsreport.config.json, nodejs: 20.9.0)
+2024-01-15T10:41:52.838Z - info: Searching for available extensions in /home/ruby/workspace/React_RoR/jsreportapp/
+2024-01-15T10:41:52.849Z - info: Extensions location cache contains up to date information, skipping crawling in /home/ruby/workspace/React_RoR/jsreportapp/
+2024-01-15T10:41:52.863Z - info: Found 35 extension(s)
+2024-01-15T10:41:52.976Z - info: Using extension base@4.0.0
+2024-01-15T10:41:52.985Z - info: Using extension child-templates@4.0.0
+2024-01-15T10:41:52.993Z - info: Using extension cli@4.0.2
+2024-01-15T10:41:52.996Z - info: Using extension components@4.0.0
+2024-01-15T10:41:52.998Z - info: Using extension data@4.0.0
+2024-01-15T10:41:52.999Z - info: Using extension express@4.0.1
+2024-01-15T10:41:53.206Z - info: Using extension freeze@4.0.0
+2024-01-15T10:41:53.209Z - info: Using extension fs-store@4.0.1
+2024-01-15T10:41:53.289Z - info: Using extension handlebars@4.0.1
+2024-01-15T10:41:53.291Z - info: Using extension import-export@4.0.2
+2024-01-15T10:41:53.300Z - info: Using extension jsrender@4.0.0
+2024-01-15T10:41:53.301Z - info: Using extension licensing@4.0.1
+2024-01-15T10:41:53.307Z - info: Using extension localization@4.0.1
+2024-01-15T10:41:53.308Z - info: Using extension npm@4.0.0
+2024-01-15T10:41:53.317Z - info: Using extension pdf-utils@4.0.2
+2024-01-15T10:41:53.320Z - info: Using extension reports@4.0.0
+2024-01-15T10:41:53.324Z - info: Using extension tags@4.0.1
+2024-01-15T10:41:53.326Z - info: Using extension text@4.0.0
+2024-01-15T10:41:53.327Z - info: Using extension version-control@4.0.0
+2024-01-15T10:41:53.341Z - info: Using extension assets@4.0.2
+2024-01-15T10:41:53.351Z - info: Using extension authorization@4.0.0
+2024-01-15T10:41:53.357Z - info: Using extension browser-client@4.0.0
+2024-01-15T10:41:53.360Z - info: Using extension chrome-pdf@4.0.0
+2024-01-15T10:41:53.365Z - info: Using extension docx@4.1.1
+2024-01-15T10:41:53.368Z - info: Using extension html-to-xlsx@4.0.1
+2024-01-15T10:41:53.656Z - info: html-to-xlsx detected chrome as available html engine
+2024-01-15T10:41:53.656Z - info: Using extension pptx@4.1.0
+2024-01-15T10:41:53.658Z - info: Using extension scheduling@4.0.0
+2024-01-15T10:41:53.698Z - info: Using extension scripts@4.0.0
+2024-01-15T10:41:53.700Z - info: Using extension static-pdf@4.0.0
+2024-01-15T10:41:53.700Z - info: Using extension studio@4.0.2
+2024-01-15T10:41:53.780Z - info: Using extension xlsx@4.0.2
+2024-01-15T10:41:53.782Z - info: Using extension public-templates@4.0.0
+2024-01-15T10:41:53.783Z - info: Using extension sample-template@4.0.0
+2024-01-15T10:41:53.786Z - info: Using extension studio-theme-dark@4.0.0
+2024-01-15T10:41:53.789Z - info: Code sandboxing is disabled, users can potentially penetrate the local system if you allow code from external users to be part of your reports
+2024-01-15T10:41:53.790Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2024-01-15T10:41:53.790Z - info: Using fs provider for template store.
+2024-01-15T10:41:53.798Z - info: fs store is persisting using fs for /home/ruby/workspace/React_RoR/jsreportapp/data
+2024-01-15T10:41:53.816Z - info: fs store is loading data
+2024-01-15T10:41:53.895Z - info: fs store is initialized successfully
+2024-01-15T10:41:53.921Z - info: Creating default express app.
+2024-01-15T10:41:53.942Z - info: jsreport server successfully started on http port: 5488
+2024-01-15T10:41:53.944Z - info: Verifying license key free
+2024-01-15T10:41:53.946Z - info: Using free license
+2024-01-15T10:41:53.952Z - info: Initializing worker threads
+2024-01-15T10:41:54.199Z - info: 2 worker threads initialized in 247ms
+2024-01-15T10:41:54.200Z - info: Starting temp files cleanup with 180000ms threshold
+2024-01-15T10:41:54.201Z - info: reporter initialized
+2024-01-15T10:41:56.734Z - info: Render request 1 queued for execution and waiting for available worker rootId=nn02wm8pe17j6de, id=nn02wm8pe17j6de
+2024-01-15T10:41:56.794Z - info: Starting rendering request 1 rootId=nn02wm8pe17j6de, id=nn02wm8pe17j6de
+2024-01-15T10:41:56.795Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=nn02wm8pe17j6de, id=nn02wm8pe17j6de
+2024-01-15T10:41:58.296Z - warn: Error when processing render request 1
+(because) error when evaluating engine handlebars for template /Stillhigher/activities-users-main
+(because) missing helper: "sumFields"
+Error: Missing helper: "sumFields"
+    at Object.<anonymous> (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/helpers/helper-missing.js:19:13)
+    at Object.wrapper (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/internal/wrapHelper.js:15:19)
+    at 1 (eval at compile (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-handlebars/lib/handlebarsEngine.js:35:30), <anonymous>:16:108)
+    at prog (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/runtime.js:268:12)
+    at execIteration (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/helpers/each.js:51:19)
+    at Object.<anonymous> (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/helpers/each.js:61:13)
+    at Object.wrapper (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/internal/wrapHelper.js:15:19)
+    at Object.main (eval at compile (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-handlebars/lib/handlebarsEngine.js:35:30), <anonymous>:53:49)
+    at main (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/runtime.js:208:32)
+    at ret (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/runtime.js:212:12)
+wrapped by:
+Error: Error when evaluating engine handlebars for template /Stillhigher/activities-users-main
+(because) missing helper: "sumFields"
+    at module.exports (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/shared/createError.js:10:13)
+    at WorkerReporter.createError (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/shared/reporter.js:49:12)
+    at executeEngine (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/executeEngine.js:310:33)
+    at async engine.engine (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/executeEngine.js:115:14)
+    at async invokeRender (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/render.js:61:23)
+    at async WorkerReporter._render (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/render.js:142:7)
+    at async /home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/reporter.js:224:19
+    at async processAndResponse (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/advanced-workers/lib/workerHandler.js:41:17) rootId=nn02wm8pe17j6de, id=nn02wm8pe17j6de
+2024-01-15T10:41:58.297Z - warn: Rendering request 1 finished with error in 1567 ms rootId=nn02wm8pe17j6de, id=nn02wm8pe17j6de
+2024-01-15T10:42:00.262Z - info: Render request 2 queued for execution and waiting for available worker rootId=v0984d8hw5ogse0, id=v0984d8hw5ogse0
+2024-01-15T10:42:00.297Z - info: Starting rendering request 2 rootId=v0984d8hw5ogse0, id=v0984d8hw5ogse0
+2024-01-15T10:42:00.298Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=v0984d8hw5ogse0, id=v0984d8hw5ogse0
+2024-01-15T10:42:01.150Z - warn: Error when processing render request 2
+(because) error when evaluating engine handlebars for template /Stillhigher/activities-users-main
+(because) missing helper: "sumFields"
+Error: Missing helper: "sumFields"
+    at Object.<anonymous> (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/helpers/helper-missing.js:19:13)
+    at Object.wrapper (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/internal/wrapHelper.js:15:19)
+    at 1 (eval at compile (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-handlebars/lib/handlebarsEngine.js:35:30), <anonymous>:16:108)
+    at prog (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/runtime.js:268:12)
+    at execIteration (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/helpers/each.js:51:19)
+    at Object.<anonymous> (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/helpers/each.js:61:13)
+    at Object.wrapper (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/internal/wrapHelper.js:15:19)
+    at Object.main (eval at compile (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-handlebars/lib/handlebarsEngine.js:35:30), <anonymous>:53:49)
+    at main (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/runtime.js:208:32)
+    at ret (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/handlebars/dist/cjs/handlebars/runtime.js:212:12)
+wrapped by:
+Error: Error when evaluating engine handlebars for template /Stillhigher/activities-users-main
+(because) missing helper: "sumFields"
+    at module.exports (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/shared/createError.js:10:13)
+    at WorkerReporter.createError (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/shared/reporter.js:49:12)
+    at executeEngine (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/executeEngine.js:310:33)
+    at async engine.engine (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/executeEngine.js:115:14)
+    at async invokeRender (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/render.js:61:23)
+    at async WorkerReporter._render (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/render/render.js:142:7)
+    at async /home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/jsreport-core/lib/worker/reporter.js:224:19
+    at async processAndResponse (/home/ruby/workspace/React_RoR/jsreportapp/node_modules/@jsreport/advanced-workers/lib/workerHandler.js:41:17) rootId=v0984d8hw5ogse0, id=v0984d8hw5ogse0
+2024-01-15T10:42:01.151Z - warn: Rendering request 2 finished with error in 890 ms rootId=v0984d8hw5ogse0, id=v0984d8hw5ogse0
+2024-01-15T10:42:24.535Z - info: Initializing jsreport (version: 4.2.0, configuration file: jsreport.config.json, nodejs: 20.9.0)
+2024-01-15T10:42:24.539Z - info: Searching for available extensions in /home/ruby/workspace/React_RoR/jsreportapp/
+2024-01-15T10:42:24.550Z - info: Extensions location cache contains up to date information, skipping crawling in /home/ruby/workspace/React_RoR/jsreportapp/
+2024-01-15T10:42:24.563Z - info: Found 35 extension(s)
+2024-01-15T10:42:24.681Z - info: Using extension base@4.0.0
+2024-01-15T10:42:24.688Z - info: Using extension child-templates@4.0.0
+2024-01-15T10:42:24.694Z - info: Using extension cli@4.0.2
+2024-01-15T10:42:24.697Z - info: Using extension components@4.0.0
+2024-01-15T10:42:24.699Z - info: Using extension data@4.0.0
+2024-01-15T10:42:24.701Z - info: Using extension express@4.0.1
+2024-01-15T10:42:24.909Z - info: Using extension freeze@4.0.0
+2024-01-15T10:42:24.913Z - info: Using extension fs-store@4.0.1
+2024-01-15T10:42:24.996Z - info: Using extension handlebars@4.0.1
+2024-01-15T10:42:24.999Z - info: Using extension import-export@4.0.2
+2024-01-15T10:42:25.010Z - info: Using extension jsrender@4.0.0
+2024-01-15T10:42:25.011Z - info: Using extension licensing@4.0.1
+2024-01-15T10:42:25.017Z - info: Using extension localization@4.0.1
+2024-01-15T10:42:25.019Z - info: Using extension npm@4.0.0
+2024-01-15T10:42:25.029Z - info: Using extension pdf-utils@4.0.2
+2024-01-15T10:42:25.032Z - info: Using extension reports@4.0.0
+2024-01-15T10:42:25.037Z - info: Using extension tags@4.0.1
+2024-01-15T10:42:25.039Z - info: Using extension text@4.0.0
+2024-01-15T10:42:25.040Z - info: Using extension version-control@4.0.0
+2024-01-15T10:42:25.053Z - info: Using extension assets@4.0.2
+2024-01-15T10:42:25.062Z - info: Using extension authorization@4.0.0
+2024-01-15T10:42:25.066Z - info: Using extension browser-client@4.0.0
+2024-01-15T10:42:25.069Z - info: Using extension chrome-pdf@4.0.0
+2024-01-15T10:42:25.076Z - info: Using extension docx@4.1.1
+2024-01-15T10:42:25.079Z - info: Using extension html-to-xlsx@4.0.1
+2024-01-15T10:42:25.347Z - info: html-to-xlsx detected chrome as available html engine
+2024-01-15T10:42:25.348Z - info: Using extension pptx@4.1.0
+2024-01-15T10:42:25.350Z - info: Using extension scheduling@4.0.0
+2024-01-15T10:42:25.384Z - info: Using extension scripts@4.0.0
+2024-01-15T10:42:25.385Z - info: Using extension static-pdf@4.0.0
+2024-01-15T10:42:25.386Z - info: Using extension studio@4.0.2
+2024-01-15T10:42:25.455Z - info: Using extension xlsx@4.0.2
+2024-01-15T10:42:25.457Z - info: Using extension public-templates@4.0.0
+2024-01-15T10:42:25.458Z - info: Using extension sample-template@4.0.0
+2024-01-15T10:42:25.461Z - info: Using extension studio-theme-dark@4.0.0
+2024-01-15T10:42:25.464Z - info: Code sandboxing is disabled, users can potentially penetrate the local system if you allow code from external users to be part of your reports
+2024-01-15T10:42:25.464Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2024-01-15T10:42:25.465Z - info: Using fs provider for template store.
+2024-01-15T10:42:25.472Z - info: fs store is persisting using fs for /home/ruby/workspace/React_RoR/jsreportapp/data
+2024-01-15T10:42:25.481Z - info: fs store is loading data
+2024-01-15T10:42:25.572Z - info: fs store is initialized successfully
+2024-01-15T10:42:25.598Z - info: Creating default express app.
+2024-01-15T10:42:25.620Z - info: jsreport server successfully started on http port: 5488
+2024-01-15T10:42:25.622Z - info: Verifying license key free
+2024-01-15T10:42:25.623Z - info: Using free license
+2024-01-15T10:42:25.630Z - info: Initializing worker threads
+2024-01-15T10:42:25.879Z - info: 2 worker threads initialized in 250ms
+2024-01-15T10:42:25.880Z - info: Starting temp files cleanup with 180000ms threshold
+2024-01-15T10:42:25.881Z - info: reporter initialized
+2024-01-15T10:42:31.911Z - info: Render request 1 queued for execution and waiting for available worker rootId=2982vcdtpd89o6i, id=2982vcdtpd89o6i
+2024-01-15T10:42:31.971Z - info: Starting rendering request 1 rootId=2982vcdtpd89o6i, id=2982vcdtpd89o6i
+2024-01-15T10:42:31.972Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=2982vcdtpd89o6i, id=2982vcdtpd89o6i
+2024-01-15T10:42:35.261Z - info: Rendering request 1 finished in 3350 ms rootId=2982vcdtpd89o6i, id=2982vcdtpd89o6i
