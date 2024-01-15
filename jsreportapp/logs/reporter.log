@@ -7034,3 +7034,125 @@ Error: Error when evaluating engine handlebars for template /Stillhigher/activit
 2024-01-15T10:42:31.971Z - info: Starting rendering request 1 rootId=2982vcdtpd89o6i, id=2982vcdtpd89o6i
 2024-01-15T10:42:31.972Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=2982vcdtpd89o6i, id=2982vcdtpd89o6i
 2024-01-15T10:42:35.261Z - info: Rendering request 1 finished in 3350 ms rootId=2982vcdtpd89o6i, id=2982vcdtpd89o6i
+2024-01-15T16:54:25.122Z - info: Initializing jsreport (version: 4.2.0, configuration file: jsreport.config.json, nodejs: 20.9.0)
+2024-01-15T16:54:25.124Z - info: Searching for available extensions in /home/ruby/workspace/React_RoR/jsreportapp/
+2024-01-15T16:54:25.127Z - info: Extensions location cache /tmp/jsreport/core/locations.json contains older information, crawling
+2024-01-15T16:54:25.237Z - info: Found 35 extension(s)
+2024-01-15T16:54:25.275Z - info: Using extension base@4.0.0
+2024-01-15T16:54:25.278Z - info: Using extension child-templates@4.0.0
+2024-01-15T16:54:25.280Z - info: Using extension cli@4.0.2
+2024-01-15T16:54:25.281Z - info: Using extension components@4.0.0
+2024-01-15T16:54:25.282Z - info: Using extension data@4.0.0
+2024-01-15T16:54:25.283Z - info: Using extension express@4.0.1
+2024-01-15T16:54:25.362Z - info: Using extension freeze@4.0.0
+2024-01-15T16:54:25.363Z - info: Using extension fs-store@4.0.1
+2024-01-15T16:54:25.397Z - info: Using extension handlebars@4.0.1
+2024-01-15T16:54:25.398Z - info: Using extension import-export@4.0.2
+2024-01-15T16:54:25.401Z - info: Using extension jsrender@4.0.0
+2024-01-15T16:54:25.402Z - info: Using extension licensing@4.0.1
+2024-01-15T16:54:25.409Z - info: Using extension localization@4.0.1
+2024-01-15T16:54:25.409Z - info: Using extension npm@4.0.0
+2024-01-15T16:54:25.413Z - info: Using extension pdf-utils@4.0.2
+2024-01-15T16:54:25.414Z - info: Using extension reports@4.0.0
+2024-01-15T16:54:25.416Z - info: Using extension tags@4.0.1
+2024-01-15T16:54:25.416Z - info: Using extension text@4.0.0
+2024-01-15T16:54:25.417Z - info: Using extension version-control@4.0.0
+2024-01-15T16:54:25.422Z - info: Using extension assets@4.0.2
+2024-01-15T16:54:25.426Z - info: Using extension authorization@4.0.0
+2024-01-15T16:54:25.427Z - info: Using extension browser-client@4.0.0
+2024-01-15T16:54:25.428Z - info: Using extension chrome-pdf@4.0.0
+2024-01-15T16:54:25.430Z - info: Using extension docx@4.1.1
+2024-01-15T16:54:25.431Z - info: Using extension html-to-xlsx@4.0.1
+2024-01-15T16:54:25.544Z - info: html-to-xlsx detected chrome as available html engine
+2024-01-15T16:54:25.544Z - info: Using extension pptx@4.1.0
+2024-01-15T16:54:25.545Z - info: Using extension scheduling@4.0.0
+2024-01-15T16:54:25.560Z - info: Using extension scripts@4.0.0
+2024-01-15T16:54:25.560Z - info: Using extension static-pdf@4.0.0
+2024-01-15T16:54:25.561Z - info: Using extension studio@4.0.2
+2024-01-15T16:54:25.592Z - info: Using extension xlsx@4.0.2
+2024-01-15T16:54:25.594Z - info: Using extension public-templates@4.0.0
+2024-01-15T16:54:25.595Z - info: Using extension sample-template@4.0.0
+2024-01-15T16:54:25.596Z - info: Using extension studio-theme-dark@4.0.0
+2024-01-15T16:54:25.597Z - info: Code sandboxing is disabled, users can potentially penetrate the local system if you allow code from external users to be part of your reports
+2024-01-15T16:54:25.597Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2024-01-15T16:54:25.597Z - info: Using fs provider for template store.
+2024-01-15T16:54:25.600Z - info: fs store is persisting using fs for /home/ruby/workspace/React_RoR/jsreportapp/data
+2024-01-15T16:54:25.604Z - info: fs store is loading data
+2024-01-15T16:54:25.632Z - info: fs store is initialized successfully
+2024-01-15T16:54:25.643Z - info: Creating default express app.
+2024-01-15T16:54:25.653Z - info: jsreport server successfully started on http port: 5488
+2024-01-15T16:54:25.653Z - info: Verifying license key free
+2024-01-15T16:54:25.654Z - info: Using free license
+2024-01-15T16:54:25.656Z - info: Initializing worker threads
+2024-01-15T16:54:25.748Z - info: 2 worker threads initialized in 92ms
+2024-01-15T16:54:25.748Z - info: Starting temp files cleanup with 180000ms threshold
+2024-01-15T16:54:25.749Z - info: reporter initialized
+2024-01-15T16:54:31.025Z - info: Render request 1 queued for execution and waiting for available worker rootId=tcxz42hpa63ybm9, id=tcxz42hpa63ybm9
+2024-01-15T16:54:31.041Z - info: Starting rendering request 1 rootId=tcxz42hpa63ybm9, id=tcxz42hpa63ybm9
+2024-01-15T16:54:31.041Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=tcxz42hpa63ybm9, id=tcxz42hpa63ybm9
+2024-01-15T16:54:31.862Z - info: Rendering request 1 finished in 838 ms rootId=tcxz42hpa63ybm9, id=tcxz42hpa63ybm9
+2024-01-15T16:54:44.562Z - info: Render request 2 queued for execution and waiting for available worker rootId=vxeac8s5rgtgt6s, id=vxeac8s5rgtgt6s
+2024-01-15T16:54:44.574Z - info: Starting rendering request 2 rootId=vxeac8s5rgtgt6s, id=vxeac8s5rgtgt6s
+2024-01-15T16:54:44.574Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=vxeac8s5rgtgt6s, id=vxeac8s5rgtgt6s
+2024-01-15T16:54:45.361Z - info: Rendering request 2 finished in 799 ms rootId=vxeac8s5rgtgt6s, id=vxeac8s5rgtgt6s
+2024-01-15T16:54:49.306Z - info: Render request 3 queued for execution and waiting for available worker rootId=11olvdd4pp5ums7, id=11olvdd4pp5ums7
+2024-01-15T16:54:49.315Z - info: Starting rendering request 3 rootId=11olvdd4pp5ums7, id=11olvdd4pp5ums7
+2024-01-15T16:54:49.315Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=11olvdd4pp5ums7, id=11olvdd4pp5ums7
+2024-01-15T16:54:49.448Z - info: Rendering request 3 finished in 143 ms rootId=11olvdd4pp5ums7, id=11olvdd4pp5ums7
+2024-01-15T16:56:13.978Z - info: Initializing jsreport (version: 4.2.0, configuration file: jsreport.config.json, nodejs: 20.9.0)
+2024-01-15T16:56:13.980Z - info: Searching for available extensions in /home/ruby/workspace/React_RoR/jsreportapp/
+2024-01-15T16:56:13.983Z - info: Extensions location cache /tmp/jsreport/core/locations.json contains older information, crawling
+2024-01-15T16:56:14.063Z - info: Found 35 extension(s)
+2024-01-15T16:56:14.100Z - info: Using extension base@4.0.0
+2024-01-15T16:56:14.104Z - info: Using extension child-templates@4.0.0
+2024-01-15T16:56:14.106Z - info: Using extension cli@4.0.2
+2024-01-15T16:56:14.107Z - info: Using extension components@4.0.0
+2024-01-15T16:56:14.107Z - info: Using extension data@4.0.0
+2024-01-15T16:56:14.108Z - info: Using extension express@4.0.1
+2024-01-15T16:56:14.186Z - info: Using extension freeze@4.0.0
+2024-01-15T16:56:14.187Z - info: Using extension fs-store@4.0.1
+2024-01-15T16:56:14.222Z - info: Using extension handlebars@4.0.1
+2024-01-15T16:56:14.222Z - info: Using extension import-export@4.0.2
+2024-01-15T16:56:14.226Z - info: Using extension jsrender@4.0.0
+2024-01-15T16:56:14.226Z - info: Using extension licensing@4.0.1
+2024-01-15T16:56:14.235Z - info: Using extension localization@4.0.1
+2024-01-15T16:56:14.236Z - info: Using extension npm@4.0.0
+2024-01-15T16:56:14.240Z - info: Using extension pdf-utils@4.0.2
+2024-01-15T16:56:14.241Z - info: Using extension reports@4.0.0
+2024-01-15T16:56:14.242Z - info: Using extension tags@4.0.1
+2024-01-15T16:56:14.243Z - info: Using extension text@4.0.0
+2024-01-15T16:56:14.243Z - info: Using extension version-control@4.0.0
+2024-01-15T16:56:14.248Z - info: Using extension assets@4.0.2
+2024-01-15T16:56:14.252Z - info: Using extension authorization@4.0.0
+2024-01-15T16:56:14.254Z - info: Using extension browser-client@4.0.0
+2024-01-15T16:56:14.255Z - info: Using extension chrome-pdf@4.0.0
+2024-01-15T16:56:14.256Z - info: Using extension docx@4.1.1
+2024-01-15T16:56:14.257Z - info: Using extension html-to-xlsx@4.0.1
+2024-01-15T16:56:14.370Z - info: html-to-xlsx detected chrome as available html engine
+2024-01-15T16:56:14.371Z - info: Using extension pptx@4.1.0
+2024-01-15T16:56:14.372Z - info: Using extension scheduling@4.0.0
+2024-01-15T16:56:14.386Z - info: Using extension scripts@4.0.0
+2024-01-15T16:56:14.386Z - info: Using extension static-pdf@4.0.0
+2024-01-15T16:56:14.386Z - info: Using extension studio@4.0.2
+2024-01-15T16:56:14.417Z - info: Using extension xlsx@4.0.2
+2024-01-15T16:56:14.419Z - info: Using extension public-templates@4.0.0
+2024-01-15T16:56:14.420Z - info: Using extension sample-template@4.0.0
+2024-01-15T16:56:14.421Z - info: Using extension studio-theme-dark@4.0.0
+2024-01-15T16:56:14.422Z - info: Code sandboxing is disabled, users can potentially penetrate the local system if you allow code from external users to be part of your reports
+2024-01-15T16:56:14.422Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2024-01-15T16:56:14.422Z - info: Using fs provider for template store.
+2024-01-15T16:56:14.425Z - info: fs store is persisting using fs for /home/ruby/workspace/React_RoR/jsreportapp/data
+2024-01-15T16:56:14.428Z - info: fs store is loading data
+2024-01-15T16:56:14.460Z - info: fs store is initialized successfully
+2024-01-15T16:56:14.471Z - info: Creating default express app.
+2024-01-15T16:56:14.480Z - info: jsreport server successfully started on http port: 5488
+2024-01-15T16:56:14.481Z - info: Verifying license key free
+2024-01-15T16:56:14.482Z - info: Using free license
+2024-01-15T16:56:14.484Z - info: Initializing worker threads
+2024-01-15T16:56:14.576Z - info: 2 worker threads initialized in 92ms
+2024-01-15T16:56:14.576Z - info: Starting temp files cleanup with 180000ms threshold
+2024-01-15T16:56:14.577Z - info: reporter initialized
+2024-01-15T16:56:23.857Z - info: Render request 1 queued for execution and waiting for available worker rootId=t63u3r18cjc0616, id=t63u3r18cjc0616
+2024-01-15T16:56:23.881Z - info: Starting rendering request 1 rootId=t63u3r18cjc0616, id=t63u3r18cjc0616
+2024-01-15T16:56:23.881Z - info: Rendering template { name: activities-users-main, recipe: chrome-pdf, engine: handlebars, preview: true } rootId=t63u3r18cjc0616, id=t63u3r18cjc0616
+2024-01-15T16:56:24.708Z - info: Rendering request 1 finished in 852 ms rootId=t63u3r18cjc0616, id=t63u3r18cjc0616
